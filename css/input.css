@@ -1,0 +1,9 @@
+@import "tailwindcss/components";
+
+@import "tailwindcss/utilities";
+
+/*ltr.min.css*/
+@import "ltr.min.css";
+
+@import "script.css";
+
