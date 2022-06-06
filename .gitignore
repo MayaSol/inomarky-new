@@ -1,6 +1,11 @@
 dist/
 node_modules/
 vendor/
+!vendor/bootstrap/bootstrap.min.css
+!vendor/bootstrap/bootstrap.min.css
+!vendor/slickslider/ltr-slick-custom.js
+initial/
+old/
 *.sublime-*
 *.rar
 *.zip

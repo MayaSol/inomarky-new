@@ -162,28 +162,24 @@ input::-webkit-input-placeholder,
 textarea::-webkit-input-placeholder {
     font-size: 15px;
     letter-spacing: .3px;
-    text-transform: capitalize
 }
 
 input:-ms-input-placeholder,
 textarea:-ms-input-placeholder {
     font-size: 15px;
     letter-spacing: .3px;
-    text-transform: capitalize
 }
 
 input::-ms-input-placeholder,
 textarea::-ms-input-placeholder {
     font-size: 15px;
     letter-spacing: .3px;
-    text-transform: capitalize
 }
 
 input::placeholder,
 textarea::placeholder {
     font-size: 15px;
     letter-spacing: .3px;
-    text-transform: capitalize
 }
 
 .form-container {
@@ -249,7 +245,6 @@ textarea::placeholder {
     letter-spacing: .3px;
     background-size: 12px 10px;
     border: 1px solid #e3e3e3;
-    text-transform: capitalize;
     cursor: pointer;
     color: #444
 }
@@ -2379,8 +2374,8 @@ textarea::placeholder {
 }
 
 .product-feature-meta h4 {
-    font-family: sans-serif;
-    font-weight: 900;
+    font-family: 'Jost', sans-serif;
+    font-weight: 700;
     color: #477CDB
 }
 
@@ -3473,7 +3468,7 @@ textarea::placeholder {
 .price-card {
     text-align: center;
     border-radius: 6px;
-    margin: 56px 13px 0;
+    margin: 76px 13px 0;
     padding: 0 50px 50px;
     background: rgba(71, 124, 219, .18)
 }
@@ -3508,19 +3503,22 @@ textarea::placeholder {
     color: #a8aeb1
 }
 
-.price-icon {
+.price-img {
     width: 130px;
     height: 130px;
-    line-height: 110px;
+    margin-right: auto;
+    margin-left: auto;
     border-radius: 50%;
-    text-align: center;
-    font-size: 50px;
-    margin-top: -65px;
-    margin-bottom: 25px;
-    display: inline-block;
-    color: #fff;
-    background: #477CDB;
-    border: 10px solid #fff
+    border: 10px solid #477CDB;
+    overflow: hidden;
+    transform: translateY(-50%);
+}
+
+.price-img img {
+    width: 100%;
+    height: 100%;
+    object-fit:  cover;
+    object-position:  center;
 }
 
 .price-title {
@@ -4420,7 +4418,7 @@ textarea::placeholder {
     -ms-grid-row-span: 1;
     -ms-grid-column: 1;
     -ms-grid-column-span: 2;
-    grid-area: 3 / 1 / 4 / 3;
+    grid-area: 4 / 1 / 5 / 3;
     color: #fff;
     background: #477CDB;
     letter-spacing: .8px;
@@ -4583,7 +4581,7 @@ textarea::placeholder {
 .sidebar-btn {
     text-align: center;
     padding: 50px 0;
-    margin: 0 15px;
+    margin: 25px 15px 0;
     border-radius: 6px;
     background: #f1f2f3
 }
@@ -7773,7 +7771,7 @@ textarea::placeholder {
     content: "";
     top: 0;
     left: 0;
-    background: url(../images/shape/pattern.html);
+    background: url(../../images/shape/pattern.html);
     opacity: .4;
     background-repeat: no-repeat;
     background-position: center;

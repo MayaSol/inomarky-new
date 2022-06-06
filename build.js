@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const SvgStore = require("webpack-svgstore");
 
 console.log(path.resolve(__dirname, './index.js'));
 
@@ -38,10 +39,17 @@ const compiler = webpack({
                 }
             ]
         }]
-},
-plugins: [new MiniCssExtractPlugin({
-    filename: "ltr.min.css",
-})],
+    },
+    plugins: [
+        new MiniCssExtractPlugin({
+            filename: "ltr.min.css",
+        }),
+        new SvgStore({
+          path: path.resolve(__dirname, "./svg-icons/*.svg"),
+          fileName: "./images/svg-sprite.svg",
+          prefix: "icon-",
+        }),
+    ],
 });
 
 compiler.run((err, stats) => { // [Stats Object](#stats-object)

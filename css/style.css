@@ -1,0 +1,38 @@
+/*! city-switcher*/
+.header-part .city-switcher-wrapper {
+	color: #fff;
+}
+
+.header-part .city-call-phone {
+	color:  #fff;
+}
+
+.header-part.sticky .city-call-phone {
+	color: #0d6efd;
+}
+
+.header-part.sticky .city-switcher {
+	color: #444;
+}
+
+.city-select__item {
+	padding: 5px 10px;
+	cursor:  pointer;
+}
+
+.city-select__item--active,
+.city-select__item:hover {
+	color: #0d6efd;
+}
+
+.sidebar-content .city-switcher {
+	margin-bottom: 5px;
+}
+
+/*! svg*/
+.svg-icon {
+    fill: currentColor;
+    stroke: currentColor;
+    height: 30px;
+    width: 30px;
+}
