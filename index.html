@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="vendor/venobox/venobox.min.css">
     <link rel="stylesheet" href="vendor/slickslider/slick.min.css">
     <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="dist/ltr.min.css">
+    <link rel="stylesheet" href="css/ltr.min.css">
 </head>
 
 <body>
@@ -76,10 +76,10 @@
                 </div>
             </form>
         </div>
-        <div class="city-switcher-wrapper hidden 2xl:block 3xl:flex items-center h-full py-3 font-medium flex-shrink-0 ml-[15px]">
+        <div class="city-switcher-wrapper hidden 2xl:block 3xl:flex items-center h-full py-3 font-medium flex-shrink-0">
             <div class="relative dropdown ">
                 <div class="city-switcher dropdown-toggle flex items-center space-x-1 mr-8 cursor-pointer active" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                    <span data-city="spb" class="lg:text-sm xl:text-base">Санкт-Петербург</span>
+                    <div data-city="spb" class="ml-auto lg:text-sm xl:text-base">Санкт-Петербург</div>
                 </div>
                 <ul class="city-select dropdown-menu text-black" aria-labelledby="dropdownMenuLink">
                     <li data-city="spb" data-phone="+7 (812) 565-60-48" class="city-select__item city-select__item--active">Санкт-Петербург</li>
@@ -96,7 +96,7 @@
             <div class="city-switcher-wrapper block 2xl:hidden items-center pt-3 font-medium flex-shrink-0 ml-[15px]">
                 <div class="relative dropdown ">
                     <div class="city-switcher dropdown-toggle flex items-center space-x-1 mr-8 cursor-pointer active" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                        <span data-city="spb" class="lg:text-sm xl:text-base">Санкт-Петербург</span>
+                        <div data-city="spb" class="ml-auto lg:text-sm xl:text-base">Санкт-Петербург</div>
                     </div>
                     <ul class="city-select dropdown-menu text-black" aria-labelledby="dropdownMenuLink">
                         <li data-city="spb" data-phone="+7 (812) 565-60-48" class="city-select__item city-select__item--active">Санкт-Петербург</li>
@@ -156,15 +156,7 @@
             </nav>
         </div>
     </aside>
-    <div class="float-menu">
-        <button type="button" class="float-widget badge-hover"><i class="material-icons">widgets</i><span class="badge arrow-right">widgets</span><sup>9</sup></button>
-        <ul class="float-list">
-            <li class="float-item"><a href="compare.html" class="badge-hover"><i class="purple material-icons">compare</i><span class="badge arrow-right">compare</span><sup>2</sup></a></li>
-            <li class="float-item"><a href="favorite.html" class="badge-hover"><i class="red material-icons">favorite</i><span class="badge arrow-right">favorite</span><sup>4</sup></a></li>
-            <li class="float-item"><a href="notify.html" class="badge-hover"><i class="orange material-icons">notifications</i><span class="badge arrow-right">notify</span><sup>3</sup></a></li>
-        </ul>
-    </div>
-    <!--       <div class="mobile-menu"><a href="register.html"><i class="material-icons">person</i><span>account</span></a><a href="notify.html"><i class="material-icons">notifications</i><span>notify</span><sup>9</sup></a><a href="create-ads.html" title="sell vehicless"><i class="material-icons">storefront</i></a><a href="compare.html"><i class="material-icons">compare</i><span>compare</span><sup>3+</sup></a><a href="favorite.html"><i class="material-icons">favorite</i><span>favorite</span><sup>8</sup></a></div> -->
+
     <section class="section-gap-120 banner-slider slider-count">
         <div style="background: url(images/banner/landing/ltr/01.jpg) no-repeat center / cover;">
             <div class="banner-overlay">
@@ -2349,7 +2341,6 @@
     <script src="vendor/venobox/venobox-custom.js"></script>
     <script src="js/dropdown-menu.js"></script>
     <script src="js/select-option.js"></script>
-    <script src="js/float-menu.js"></script>
     <script src="js/custom.js"></script>
     <script src="js/script.js"></script>
 </body>

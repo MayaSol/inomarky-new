@@ -15,6 +15,10 @@
 	color: #444;
 }
 
+.header-part .city-switcher {
+	min-width: 135px;
+}
+
 .city-select__item {
 	padding: 5px 10px;
 	cursor:  pointer;
@@ -27,6 +31,19 @@
 
 .sidebar-content .city-switcher {
 	margin-bottom: 5px;
+}
+
+.city-call-phone {
+	display: block;
+}
+
+.sidebar-content .city-call-phone {
+	margin-right: 2em;
+	text-align: right;
+}
+
+.header-part .city-call-phone  {
+	min-width: 160px;
 }
 
 /*! svg*/

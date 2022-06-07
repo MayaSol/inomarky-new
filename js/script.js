@@ -1,25 +1,33 @@
 $(document).ready(function() {
 
     /*Выпадашка с городами*/
-    getAllCities();
-    setCity();
+    try {
+        getAllCities();
+        setCity();
 
-    var cityItems = document.querySelectorAll('.city-select__item');
-    for (i=0; i<cityItems.length; i++) {
-        cityItems[i].addEventListener('click', function(event) {
-            event.preventDefault();
-            if (this.dataset && this.dataset.city && this.dataset.city != "") {
-                changeCity(this.dataset.city);
-            }
-        })
+        var cityItems = document.querySelectorAll('.city-select__item');
+        for (i=0; i<cityItems.length; i++) {
+            cityItems[i].addEventListener('click', function(event) {
+                event.preventDefault();
+                if (this.dataset && this.dataset.city && this.dataset.city != "") {
+                    changeCity(this.dataset.city);
+                }
+            })
+        }
+    } catch(e) {
+        console.log('Ошибка (выбор города): ' + e.name + ":" + e.message + "\n" + e.stack);
     }
 
     /*Выбор марки и модели*/
-    const selectMark = document.getElementById('form-select--mark');
-    changeMark(selectMark);
-    selectMark.addEventListener('change',function(event) {
-        changeMark(this);
-    });
+    try {
+        const selectMark = document.getElementById('form-select--mark');
+        changeMark(selectMark);
+        selectMark.addEventListener('change',function(event) {
+            changeMark(this);
+        });
+    } catch(e) {
+        console.log('Ошибка (Выбор марки и модели): ' + e.name + ":" + e.message + "\n" + e.stack);
+    }
 
 });
 
@@ -92,7 +100,7 @@ function setCity() {
 
     for (var i=0; i<citySwitchers.length; i++) {
 
-        cityEl = citySwitchers[i].querySelector('span[data-city]');
+        cityEl = citySwitchers[i].querySelector('div[data-city]');
         cityEl.textContent = ALL_CITIES[cityActive];
 
         var items = citySwitchers[i].querySelectorAll('.city-select__item');
