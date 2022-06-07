@@ -6,7 +6,7 @@ $(document).ready(function() {
         setCity();
 
         var cityItems = document.querySelectorAll('.city-select__item');
-        for (i=0; i<cityItems.length; i++) {
+        for (i = 0; i < cityItems.length; i++) {
             cityItems[i].addEventListener('click', function(event) {
                 event.preventDefault();
                 if (this.dataset && this.dataset.city && this.dataset.city != "") {
@@ -14,22 +14,27 @@ $(document).ready(function() {
                 }
             })
         }
-    } catch(e) {
+    } catch (e) {
         console.log('Ошибка (выбор города): ' + e.name + ":" + e.message + "\n" + e.stack);
     }
 
     /*Выбор марки и модели*/
     try {
         const selectMark = document.getElementById('form-select--mark');
-        changeMark(selectMark);
-        selectMark.addEventListener('change',function(event) {
-            changeMark(this);
-        });
-    } catch(e) {
+        if (selectMark) {
+            changeMark(selectMark);
+            selectMark.addEventListener('change', function(event) {
+                changeMark(this);
+            });
+        }
+    } catch (e) {
         console.log('Ошибка (Выбор марки и модели): ' + e.name + ":" + e.message + "\n" + e.stack);
     }
 
-});
+    /*Кнопки скрытия-раскрытия текста*/
+    hideOpenBtns();
+
+}); //$(document).ready
 
 
 /*Работа с cookies*/
@@ -78,9 +83,12 @@ function getCookie(name) {
 var ALL_CITIES = {};
 
 function getAllCities() {
-    var cityOpts = document.querySelector('.city-select').querySelectorAll('.city-select__item');
-    for (i=0; i<cityOpts.length; i++) {
-        ALL_CITIES[cityOpts[i].dataset.city] = cityOpts[i].innerText;
+    var citySelect = document.querySelector('.city-select');
+    if (citySelect) {
+        var cityOpts = citySelect.querySelectorAll('.city-select__item');
+        for (i = 0; i < cityOpts.length; i++) {
+            ALL_CITIES[cityOpts[i].dataset.city] = cityOpts[i].innerText;
+        }
     }
 }
 
@@ -94,24 +102,23 @@ function setCity() {
 
         if ((typeof cityActive === 'undefined') || (cityActive == "") || (cityActive == "undefined")) {
             cityActive = Object.keys(ALL_CITIES)[0];
-            setCookie('city',cityActive);
+            setCookie('city', cityActive);
         }
     }
 
-    for (var i=0; i<citySwitchers.length; i++) {
+    for (var i = 0; i < citySwitchers.length; i++) {
 
         cityEl = citySwitchers[i].querySelector('div[data-city]');
         cityEl.textContent = ALL_CITIES[cityActive];
 
         var items = citySwitchers[i].querySelectorAll('.city-select__item');
-        for (var j=0; j<items.length; j++) {
+        for (var j = 0; j < items.length; j++) {
             if (items[j].dataset.city === cityActive) {
                 phoneActive = items[j].dataset.phone;
                 if (!items[j].classList.contains('city-select__item--active')) {
                     items[j].classList.add('city-select__item--active')
                 }
-            }
-            else {
+            } else {
                 items[j].classList.remove('city-select__item--active');
             }
         }
@@ -122,7 +129,7 @@ function setCity() {
 }
 
 function changeCity(code) {
-    setCookie('city',code);
+    setCookie('city', code);
     setCity();
 }
 
@@ -131,26 +138,56 @@ const modelOpts = document.querySelectorAll('#form-select--model option');
 const selectModel = document.getElementById('form-select--model');
 
 function changeMark(markEl) {
-        if (markEl.value === "$") {
-            selectModel.setAttribute('disabled','true');
-            return;
-        }
-        else {
-            selectModel.removeAttribute('disabled');
-        }
-        var regexp = new RegExp(`,+${markEl.value || '.?'},+`);
-        for (option of modelOpts) {
-            var data = option.dataset;
-            if (!(typeof data === 'undefined') && !(typeof data.mark === 'undefined') && data.mark) {
-                if (!regexp.test(`,${data.mark},`)) {
-                    if (!option.classList.contains('hidden')) {
-                        option.classList.add('hidden');
-                    }
+    if (markEl.value === "$") {
+        selectModel.setAttribute('disabled', 'true');
+        return;
+    } else {
+        selectModel.removeAttribute('disabled');
+    }
+    var regexp = new RegExp(`,+${markEl.value || '.?'},+`);
+    for (option of modelOpts) {
+        var data = option.dataset;
+        if (!(typeof data === 'undefined') && !(typeof data.mark === 'undefined') && data.mark) {
+            if (!regexp.test(`,${data.mark},`)) {
+                if (!option.classList.contains('hidden')) {
+                    option.classList.add('hidden');
                 }
-                else {
-                    option.classList.remove('hidden');
-                }
+            } else {
+                option.classList.remove('hidden');
             }
         }
-    };
+    }
+};
 
+/*Кнопки скрытия-раскрытия текста*/
+const ATR_OPEN_TEXT = 'data-open-text';
+
+function hideOpenBtns() {
+    var btns = document.querySelectorAll('*[' + ATR_OPEN_TEXT + ']');
+    console.log(btns);
+    for (btn of btns) {
+        btn.addEventListener('click', function(event) {
+            event.preventDefault();
+            var openBtn = this;
+            var data = openBtn.dataset;
+            var targetId = data && data.openText;
+            var targetEl = targetId && document.querySelector(targetId);
+            if (targetEl) {
+                console.log(targetEl);
+                targetEl.style.cssText = "position: static;"
+                var closeBtnId = data && data.closeBtn;
+                var closeBtnEl = closeBtnId && document.querySelector(closeBtnId);
+                if (closeBtnEl) {
+                    openBtn.style.cssText="display:none";
+                    closeBtnEl.style.cssText="display:block";
+                    closeBtnEl.addEventListener('click', function(event) {
+                        console.log(openBtn);
+                        targetEl.style.cssText = "position: absolute;"
+                        this.style.cssText = "display:none";
+                        openBtn.style.cssText = "display:block";
+                    })
+                }
+            }
+        });
+    }
+}

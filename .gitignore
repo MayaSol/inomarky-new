@@ -1,11 +1,15 @@
 dist/
 node_modules/
-vendor/
+vendor/*
+vendor/bootstrap/*
 !vendor/bootstrap/bootstrap.min.css
-!vendor/bootstrap/bootstrap.min.css
+vendor/countdown/*
+vendor/slickslider/*
 !vendor/slickslider/ltr-slick-custom.js
+vendor/venobox/*
 initial/
 old/
+css/**/*
 *.sublime-*
 *.rar
 *.zip
