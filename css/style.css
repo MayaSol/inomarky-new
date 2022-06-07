@@ -53,3 +53,22 @@
     height: 30px;
     width: 30px;
 }
+
+
+
+.ya-share2__container_size_l .ya-share2__badge .ya-share2__icon {
+	width: 45px !important;
+	height: 42px !important;
+	background-size:  32px 32px !important;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.ya-share2__list.ya-share2__list_direction_horizontal > .ya-share2__item {
+	margin-right: 15px !important;
+	margin-bottom: 15px !important;
+}
+
+.ya-share2__badge {
+	border-radius: 6px !important;
+}

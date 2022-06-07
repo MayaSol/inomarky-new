@@ -34,6 +34,9 @@ $(document).ready(function() {
     /*Кнопки скрытия-раскрытия текста*/
     hideOpenBtns();
 
+    /*Карта*/
+    buildMap();
+
 }); //$(document).ready
 
 
@@ -160,10 +163,10 @@ function changeMark(markEl) {
 };
 
 /*Кнопки скрытия-раскрытия текста*/
-const ATR_OPEN_TEXT = 'data-open-text';
+const ATR_OPEN_BTN = 'data-open-text';
 
 function hideOpenBtns() {
-    var btns = document.querySelectorAll('*[' + ATR_OPEN_TEXT + ']');
+    var btns = document.querySelectorAll('*[' + ATR_OPEN_BTN + ']');
     console.log(btns);
     for (btn of btns) {
         btn.addEventListener('click', function(event) {
@@ -173,7 +176,6 @@ function hideOpenBtns() {
             var targetId = data && data.openText;
             var targetEl = targetId && document.querySelector(targetId);
             if (targetEl) {
-                console.log(targetEl);
                 targetEl.style.cssText = "position: static;"
                 var closeBtnId = data && data.closeBtn;
                 var closeBtnEl = closeBtnId && document.querySelector(closeBtnId);
@@ -181,7 +183,6 @@ function hideOpenBtns() {
                     openBtn.style.cssText="display:none";
                     closeBtnEl.style.cssText="display:block";
                     closeBtnEl.addEventListener('click', function(event) {
-                        console.log(openBtn);
                         targetEl.style.cssText = "position: absolute;"
                         this.style.cssText = "display:none";
                         openBtn.style.cssText = "display:block";
@@ -190,4 +191,47 @@ function hideOpenBtns() {
             }
         });
     }
+}
+
+
+function buildMap() {
+    var map = document.getElementById('map');
+    console.log(map);
+    var center = map.dataset.center.split(',');
+    console.log(center);
+    ymaps.ready(function () {
+    var myMap = new ymaps.Map('map', {
+            center: [center[0], center[1]],
+            zoom: 10
+        }, {
+            searchControlProvider: 'yandex#search'
+        }),
+
+        // Создаём макет содержимого.
+        MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
+            '<div style="color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>'
+        ),
+
+
+        myPlacemark = new ymaps.Placemark(myMap.getCenter(), {
+            hintContent: 'Собственный значок метки',
+            balloonContent: 'Это красивая метка'
+        }, {
+            // Опции.
+            // Необходимо указать данный тип макета.
+            iconLayout: 'default#image',
+            // Своё изображение иконки метки.
+            iconImageHref: 'images/myIcon.gif',
+            // Размеры метки.
+            iconImageSize: [30, 42],
+            // Смещение левого верхнего угла иконки относительно
+            // её "ножки" (точки привязки).
+            iconImageOffset: [-5, -38]
+        })
+
+
+    myMap.geoObjects
+        .add(myPlacemark);
+
+});
 }

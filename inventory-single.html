@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="vendor/slickslider/slick.min.css">
     <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="dist/ltr.min.css">
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=d25f9b8a-94ad-446e-b48e-0fb15d01bc70" type="text/javascript"></script>
 </head>
 
 <body data-bs-spy="scroll" data-bs-target="#scrollspy">
@@ -159,15 +160,6 @@
             </nav>
         </div>
     </aside>
-    <div class="float-menu">
-        <button type="button" class="float-widget badge-hover"><i class="material-icons">widgets</i><span class="badge arrow-right">widgets</span><sup>9</sup></button>
-        <ul class="float-list">
-            <li class="float-item"><a href="compare.html" class="badge-hover"><i class="purple material-icons">compare</i><span class="badge arrow-right">compare</span><sup>2</sup></a></li>
-            <li class="float-item"><a href="favorite.html" class="badge-hover"><i class="red material-icons">favorite</i><span class="badge arrow-right">favorite</span><sup>4</sup></a></li>
-            <li class="float-item"><a href="notify.html" class="badge-hover"><i class="orange material-icons">notifications</i><span class="badge arrow-right">notify</span><sup>3</sup></a></li>
-        </ul>
-    </div>
-    <div class="mobile-menu"><a href="register.html"><i class="material-icons">person</i><span>account</span></a><a href="notify.html"><i class="material-icons">notifications</i><span>notify</span><sup>9</sup></a><a href="create-ads.html" title="sell vehicless"><i class="material-icons">storefront</i></a><a href="compare.html"><i class="material-icons">compare</i><span>compare</span><sup>3+</sup></a><a href="favorite.html"><i class="material-icons">favorite</i><span>favorite</span><sup>8</sup></a></div>
     <section>
         <div class="single-banner min-h-[90px]">
         </div>
@@ -232,7 +224,7 @@
                             <h4 class="common-card-header-title">Описание</h4>
                         </div>
                         <div class="common-card-body flex flex-col grow">
-                            <div class="relative w-full grow overflow-hidden">
+                            <div class="relative w-full min-h-[246px] 2xl:h-auto grow overflow-hidden">
                                 <div class="absolute" id="hiddenText">
                                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit Praesentium numquam culpa hic repellat quasi architecto eius voluptatibus voluptate beatae libero eum cupiditate adipisci vel Quaerat quisquam adipisci quam libero quo alias incidunt expedita atque esse iusto facilis nostrum Dolor est dolore tempore officiis aliquid ad recusandae cumque eligendi sapiente eius architecto ratione nemo nostrum accusamus Quos eligendi quaerat tempore aut sed minus ut provident ullam deleniti cumque modi nihil placeat ipsam saepe distinctio <span class="d-block mt-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos provident voluptas nam inventore reprehenderit sequi dolor ut quis repellendus nisi cum neque eum sunt aspernatur fuga expedita, tempora ipsum rerum, delectus explicabo nihil dignissimos nesciunt nemo. Modi, reiciendis temporibus ipsum sed, nesciunt corrupti debitis consequuntur amet cumque voluptas possimus cupiditate.</span></p>
                                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit Praesentium numquam culpa hic repellat quasi architecto eius voluptatibus voluptate beatae libero eum cupiditate adipisci vel Quaerat quisquam adipisci quam libero quo alias incidunt expedita atque esse iusto facilis nostrum Dolor est dolore tempore officiis aliquid ad recusandae cumque eligendi sapiente eius architecto ratione nemo nostrum accusamus Quos eligendi quaerat tempore aut sed minus ut provident ullam deleniti cumque modi nihil placeat ipsam saepe distinctio <span class="d-block mt-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos provident voluptas nam inventore reprehenderit sequi dolor ut quis repellendus nisi cum neque eum sunt aspernatur fuga expedita, tempora ipsum rerum, delectus explicabo nihil dignissimos nesciunt nemo. Modi, reiciendis temporibus ipsum sed, nesciunt corrupti debitis consequuntur amet cumque voluptas possimus cupiditate.</span></p>
@@ -252,7 +244,10 @@
                         </div>
                         <div class="common-card-body">
                             <div class="product-single-vendor">
-                                <a href="" class="vendor-grid-cover"><img src="images/bg/cover.jpg" alt="cover"></a>
+                                <div href="" class="vendor-grid-cover">
+                                    <div class="map min-h-[150px]" id="map" data-center="55.751574, 37.573856">
+                                    </div>
+                                 </div>
                                 <ul class="vendor-grid-meta">
                                     <li class="location"><i class="material-icons">map</i><span>Санкт-Петербург, Энгельса 33/1</span></li>
                                     <li class="rating"><i class="material-icons">star</i><span><b>4.9</b>/28 Ratings</span></li>
@@ -399,7 +394,7 @@
                         <div class="common-card-header">
                             <h4 class="common-card-header-title">Поделиться</h4>
                         </div>
-                        <div class="common-card-body">
+                        <div class="common-card-body pb-[7px]">
                             <script src="https://yastatic.net/share2/share.js"></script>
                             <div class="ya-share2" data-curtain data-size="l" data-services="messenger,vkontakte,odnoklassniki,telegram,viber,whatsapp"></div>
                         </div>
