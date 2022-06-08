@@ -161,23 +161,23 @@
         </div>
     </aside>
     <section>
-        <div class="single-banner min-h-[90px]">
+        <div class="single-banner min-h-[90px] mb-10 sm:mb-16">
+            <div class="container relative pt-20 sm:pt-24 z-10">
+                <ol class="breadcrumb min-h-[60px] pb-[30px] text-white">
+                    <li class="breadcrumb-item"><a href="index-2.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="inventory-list.html">inventory list</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">inventory single</li>
+                </ol>
+            </div>
         </div>
     </section>
-    <div class="container">
-        <ol class="breadcrumb mt-[35px] mb-[60px] text-gray-500">
-            <li class="breadcrumb-item"><a href="index-2.html">Home</a></li>
-            <li class="breadcrumb-item"><a href="inventory-list.html">inventory list</a></li>
-            <li class="breadcrumb-item active" aria-current="page">inventory single</li>
-        </ol>
-    </div>
     <section class="section-gap-100">
         <div class="container">
             <div class="row">
                 <div class="col-xl-7">
                     <div class="product-single-meta-group">
-                        <span class="product-single-meta-price">1 800 000 ₽ /
-                            <small>
+                        <span class="product-single-meta-price flex-wrap sm:flex-nowrap"><span>1 800 000 ₽ /</span>
+                            <small class="basis-full sm:basis-auto">
                                 <a class="text-gray-500" data-bs-toggle="modal" data-bs-target="#modalPrice" title="Скачать отчет" href="">Сообщить об изменении цены</a>
                             </small>
                         </span>
@@ -231,9 +231,9 @@
                                 </div>
                             </div>
                             <div class="h-[30px] mt-[20px]">
-                                 <button id="hidden-text-open" type="button" data-open-text="#hiddenText" data-close-btn="#hiddenTextClose">Читать дальше</buttton>
-                                 <button id="hiddenTextClose" class="hidden" type="button">Свернуть</button>
-                           </div>
+                                <button id="hidden-text-open" type="button" data-open-text="#hiddenText" data-close-btn="#hiddenTextClose">Читать дальше</buttton>
+                                    <button id="hiddenTextClose" class="hidden" type="button">Свернуть</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -247,7 +247,7 @@
                                 <div href="" class="vendor-grid-cover">
                                     <div class="map min-h-[150px]" id="map" data-center="55.751574, 37.573856">
                                     </div>
-                                 </div>
+                                </div>
                                 <ul class="vendor-grid-meta">
                                     <li class="location"><i class="material-icons">map</i><span>Санкт-Петербург, Энгельса 33/1</span></li>
                                     <li class="rating"><i class="material-icons">star</i><span><b>4.9</b>/28 Ratings</span></li>
