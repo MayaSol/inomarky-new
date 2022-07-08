@@ -1,0 +1,151 @@
+
+http://new.inomarkispb.ru
+
+https://docs.yandex.ru/docs/view?url=ya-disk-public%3A%2F%2FIlIZB%2FUtEtajpo6h141%2FceSg1yZRo8SoMfnMbNVxJ8twi1b9xMeONpCZObEkSdzmq%2FJ6bpmRyOJonT3VoXnDag%3D%3D&name=Задача%20на%20перенос%20шаблона%20(верстка).docx&nosw=1
+
+https://yadi.sk/d/w8f2jkaFO5pmfQ
+
+
+========================================
+06.06.2022
+========================================
+Файлы:
+vendor/bootstrap/bootstrap.min.css
+vendor/slickslider/ltr-slick-custom.js
+js/script.js
+css/ltr.min.css
+
+
+---------------------------
+1)
+Поменять 
+<button class="sidebar-close material-icons">closeЗакрыть</button>
+на
+<button class="sidebar-close material-icons">close</button>
+
+2) Добавить селектам Марки и модели id
+и атрибуты data-mark - список марок для модели
+Если у марки value="$", то селект моделей неактивен, если value="", то выводятся все марки
+
+3) 
+
+Заменить 
+<a href="register.html" class="header-user">...</a>
+на
+<div class="city-switcher-wrapper hidden 2xl:block 3xl:flex items-center h-full py-3 font-medium flex-shrink-0 ml-[15px]">
+...
+</div>
+
+Вставить в <div class="sidebar-content">:
+<div class="city-switcher-wrapper block 2xl:hidden items-center pt-3 font-medium flex-shrink-0 ml-[15px]">
+...
+</div>
+
+4)
+
+6)
+<div class="product-grid-action">
+	<button type="button" title="Сравнить" class="compare material-icons">compare</button>
+	<button type="button" title="Избранное" class="favorite material-icons">favorite</button>
+</div>
+
+Во всех блоках <div class="product-grid-action"> заменить title="Compare" и title="Favorite" на title="Сравнить" и title="Избранное".
+Перед </button> должно быть compare и favorite
+
+7)
+Заменить 
+<i class="price-icon material-icons">task_alt</i>
+на
+<div class="price-img">
+	<img src="images/city/tver.jpg"/>
+</div>
+
+
+
+
+8)
+Убрать блок  <div class="mobile-menu">...</div>
+Убрать блок  <div class="float-menu">...</div>
+Убрать <script src="js/float-menu.js"></script>
+
+
+9)
+Для предзагрузки шрифтов добавить в <head>:
+      <link rel="preload" href="/fonts/icofont.woff2" as="font">
+      <link rel="preload" href="/fonts/icon.woff2" as="font">
+      <link rel="preload" href="/fonts/cyrillic.woff2" as="font">
+
+
+=====================================================
+03.07
+=======================================================
+catalog/view/javascript/common.js
+js/custom.js
+css/ltr.min.css
+
+
+
+правки по иномаркам (надо скачать файл. я сам правил еще)
+http://new.inomarkispb.ru/
+1) при нажатии на иконку избранного или сравнения, происходит переход страницы вверх
+при это в меню гамбургера 0 не меняется на цифру
+это надо исправить, убрать переход страницы вверх и добавить анимацию, чтобы был эффект как будто с карточки товара происходит перенос в меню гамбургера...такой распространенный эффект..не знаю как еще объяснить
+2) в моб версии поправить 
+- http://joxi.ru/Dr8NJ1qho7PLQ2 чтобы было по центру
+- http://joxi.ru/ZrJpP4wfw4W5q2 чтобы влезало
+- http://joxi.ru/KAgW60wUE86GRA сделать компактнее (уменьшить высоту) плашки под брендами, я там высоту задал для десктопа, наверное из-за этого
+
+
+1)
+Добавить id="compare-total" в 
+<a href="compare.html" class="nav-link">
+
+Добавить id="wishlist-total" в 
+<a href="favorite.html" class="nav-link">
+
+В catalog/view/javascript/common.js в методах compare.add и wishlist.add ajax возвращает json объект:
+
+надо чтобы в этом json объекте , в поле total было вместо "Сравнение товаров (1)"" просто число, например 1.
+
+
+2) Добавить неразрвыне пробелы в блок <div class="nav nav-pills browse-nav">:
+<span>До 1&nbsp;000&nbsp;000&nbsp;₽</span>
+<span>До 2&nbsp;000&nbsp;000&nbsp;₽</span>
+<span>Пробег до 50&nbsp;000&nbsp;км</span>
+<span>Пробег до 100&nbsp;000&nbsp;км</span>
+<span>Не старше 3&nbsp;лет</span>
+
+
+3) В блок брендов (Популярные марки) добавить класс d-flex для <div class="col">
+
+<div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-5">
+                <div class="col d-flex">
+        <a class="brand-card" href="http://new.inomarkispb.ru/skoda/">
+            <img src="http://new.inomarkispb.ru/image/cache/catalog/brands/skoda_logo-0x0.png" alt="Skoda с пробегом">
+            <p>48 авто</p>
+        </a>
+    </div>
+    ...
+
+4) В блок фактов (Количество автосалонов, проданных авто ...) добавить класс d-flex для <div class="col">
+
+<div class="row row-cols-1 row-cols-sm-2 row-cols-xl-4">
+    <div class="col d-flex">
+        <div class="funfactor-card">
+            <i class="material-icons">drive_eta</i>
+            <h4><span class="funfactor-text">автосалонов</span><span class="funfactor-data">17</span></h4>
+        </div>
+    </div>
+    ...
+
+
+
+5) В блок Популярные категории добавить классы d-flex px-1 px-md-2 для <div class="col">
+<div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 row-cols-xl-5">
+    <div class="col d-flex px-1 px-md-2">
+    	<a href="/cars/?bfilter=a23:257;" class="category-card">
+    		<img src="images/category/sedan.png" alt="category">
+    		<span>Седаны (13)</span>
+    	</a>
+    </div>
+    ...

@@ -13,6 +13,13 @@ module.exports = {
       '2xl': '1200px',
       '3xl': '1440px'
     },
+    fontSize: {
+      sm: ['16px', '24px'],
+      base: ['18px', '27px'],
+      lg: ['20px', '28px'],
+      xl: ['24px', '32px'],
+      xxl: ['28px', '34px']
+    },
       extend: {
         spacing: {
           "25": "25px"

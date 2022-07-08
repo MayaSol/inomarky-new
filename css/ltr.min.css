@@ -630,7 +630,6 @@ textarea::placeholder {
     letter-spacing: .3px;
     padding: 15px 12px;
     border-radius: 6px;
-    white-space: nowrap;
     text-transform: uppercase;
     color: #444;
     background: var(--bs-gray-300)
@@ -812,7 +811,7 @@ textarea::placeholder {
 .accordion-item.active {
     border-color: #477CDB
 }
-.accordion-item.active i {
+.accordion-item.active .accordion-que i {
     transform: rotate(180deg)
 }
 .accordion-que {
@@ -866,6 +865,11 @@ textarea::placeholder {
     font-size: 17px;
     margin-top: 18px
 }
+
+.accordion-ans i {
+    vertical-align:  middle;
+}
+
 @media (max-width:575px) {
     .accordion-item {
         background: #f1f2f3
@@ -1037,8 +1041,8 @@ textarea::placeholder {
 .category-card {
     display: flex;
     align-items: center;
-    justify-content: center;
     flex-direction: column;
+    width: 100%;
     background: #f1f2f3;
     border-radius: 6px;
     padding: 25px 0;
@@ -1074,6 +1078,7 @@ textarea::placeholder {
     color: #5e5d72;
     font-weight: 500;
     text-transform: capitalize;
+    text-align: center;
     transition: all linear .3s;
     -webkit-transition: all linear .3s;
     -moz-transition: all linear .3s;
@@ -1848,6 +1853,7 @@ textarea::placeholder {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
     margin-top: 50px;
     padding: 45px 0;
     border-radius: 6px;
@@ -1869,12 +1875,14 @@ textarea::placeholder {
     color: #fff
 }
 .funfactor-card i {
+    flex-shrink: 0;
     width: 50px;
     height: 50px;
     line-height: 50px;
     border-radius: 50%;
     text-align: center;
     margin-right: 25px;
+    margin-left: 15px;
     font-size: 22px;
     background: #fff;
     color: #477CDB;
@@ -1923,6 +1931,11 @@ textarea::placeholder {
     -ms-transition: all linear .3s;
     -o-transition: all linear .3s
 }
+@media (max-width:767px) {
+    .funfactor-card {
+        justify-content: flex-start;
+    }
+}
 @media (max-width:1199px) {
     .funfactor-card {
         margin-top: 25px
@@ -1949,7 +1962,6 @@ textarea::placeholder {
     color: #477CDB
 }
 .brand-card img {
-    height: 100px;
     margin-bottom: 15px
 }
 .brand-card h6 {
@@ -6123,7 +6135,6 @@ textarea::placeholder {
     letter-spacing: .3px;
     font-size: 17px;
     font-weight: 400;
-    text-transform: capitalize;
     margin-top: 8px;
     margin-left: 5px;
     color: #5e5d72
