@@ -40,8 +40,11 @@ module.exports = {
       }
       }
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/aspect-ratio'),
+  ],
   corePlugins: {
     boxShadow: false,
+    aspectRatio: false,
   },
 }

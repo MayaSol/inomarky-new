@@ -8,12 +8,14 @@
     "webpack-svgstore": "^2.0.2"
   },
   "devDependencies": {
+    "@tailwindcss/aspect-ratio": "^0.4.0",
     "autoprefixer": "^10.4.7",
     "css-loader": "^6.7.1",
     "mini-css-extract-plugin": "^2.6.0",
     "postcss": "^8.4.14",
     "postcss-loader": "^7.0.0",
-    "style-loader": "^3.3.1"
+    "style-loader": "^3.3.1",
+    "webpack": "^5.73.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
