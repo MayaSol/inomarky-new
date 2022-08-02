@@ -17,7 +17,7 @@ const compiler = webpack({
     mode: 'development',
     module: {
         rules: [{
-                test: /\.css$/i,
+                test: /\.css$/,
                 exclude: /node_modules/,
                 use: [{
                     loader: MiniCssExtractPlugin.loader

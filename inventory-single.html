@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="vendor/venobox/venobox.min.css">
     <link rel="stylesheet" href="vendor/slickslider/slick.min.css">
     <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="dist/ltr.min.css">
+    <link rel="stylesheet" href="css/ltr.min.css">
     <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=d25f9b8a-94ad-446e-b48e-0fb15d01bc70" type="text/javascript"></script>
 </head>
 
@@ -191,19 +191,14 @@
                     </div>
                 </div>
                 <div class="col-xl-5">
-                    <ul class="product-single-data">
-                        <li class="view"><i class="material-icons">visibility</i>
-                            <h3>43</h3>
-                            <p>Просмотров</p>
-                        </li>
-                        <li class="rating"><i class="material-icons">stars</i>
-                            <h3>21</h3>
-                            <p>Оценки</p>
-                        </li>
-                    </ul>
+					<ul class="product-single-data">
+					<li class="view"><i class="material-icons">person</i><h3>2</h3><p>владельца</p></li>
+					<li class="click"><i class="material-icons">history</i><h3>2020</h3><p>год выпуска</p></li>
+					<li class="rating"><i class="material-icons">auto_stories</i><h3>232</h3><p>тыс. км пробег</p></li>
+					</ul>
                 </div>
                 <div class="col-xl-12">
-                    <div class="product-single-action"><button type="button" data-bs-toggle="modal" data-bs-target="#modalSchedule" title="Schedule"><i class="material-icons">check_circle</i><span>Забронировать</span></button><button type="button" class="compare" title="Compare"><i class="material-icons">compare</i><span>В сравнение</span></button><button type="button" class="favorite" title="Favorite"><i class="material-icons">favorite</i><span>В избранное</span></button><button type="button" data-bs-toggle="modal" data-bs-target="#modalQuery" title="Query"><i class="material-icons">help</i><span>Задать вопрос</span></button><button type="button" data-bs-toggle="modal" data-bs-target="#modalReport" title="Скачать отчет"><i class="material-icons">report</i><span>Скачать отчет</span></button><button type="button" data-bs-toggle="modal" data-bs-target="#modalOffer" title="Offer"><i class="material-icons">local_offer</i><span>Предложить цену</span></button></div>
+                    <div class="product-single-action"><button type="button" data-bs-toggle="modal" data-bs-target="#modalSchedule" title="Бронировать"><i class="material-icons">check_circle</i><span>Забронировать</span></button><button type="button" class="compare" title="Сравнить"><i class="material-icons">compare</i><span>В сравнение</span></button><button type="button" class="favorite" title="В избранное"><i class="material-icons">favorite</i><span>В избранное</span></button><button type="button" data-bs-toggle="modal" data-bs-target="#modalQuery" title="Спросить"><i class="material-icons">help</i><span>Задать вопрос</span></button><button type="button" data-bs-toggle="modal" data-bs-target="#modalReport" title="Скачать отчет"><i class="material-icons">report</i><span>Скачать отчет</span></button><button type="button" data-bs-toggle="modal" data-bs-target="#modalOffer" title="Поторговаться"><i class="material-icons">local_offer</i><span>Предложить цену</span></button></div>
                 </div>
                 <div class="col-xl-12">
                     <div class="product-single-slider slider-arrow slider-dots">
@@ -250,10 +245,10 @@
                                 </div>
                                 <ul class="vendor-grid-meta">
                                     <li class="location"><i class="material-icons">map</i><span>Санкт-Петербург, Энгельса 33/1</span></li>
-                                    <li class="rating"><i class="material-icons">star</i><span><b>4.9</b>/28 Ratings</span></li>
+                                    <li class="rating"><i class="material-icons">star</i><span><b>4.9</b>/28 Рейтинг на Яндексе</span></li>
                                     <li class="store"><i class="material-icons">phone</i><a href="">+7 (812) 123-45-67</a></li>
                                 </ul>
-                                <div class="vendor-grid-action"><a href="profile.html">Заказать звонок</a><button type="button" data-bs-toggle="modal" data-bs-target="#modalMessage">Онлайн показ</button></div>
+                                <div class="vendor-grid-action"><button type="button" data-bs-toggle="modal" data-bs-target="#OnlineShow">Онлайн показ</button><button type="button" data-bs-toggle="modal" data-bs-target="#callBack">Доставка на дом</button></div>
                             </div>
                         </div>
                     </div>
@@ -720,13 +715,13 @@
                     <form class="container">
                         <div class="row">
                             <div class="col-xl-4">
-                                <div class="form-group"><label class="form-label">Имя</label><input type="text" class="form-control"></div>
+                                <div class="form-group"><label class="form-label">Имя *</label><input type="text" class="form-control"></div>
                             </div>
                             <div class="col-xl-4">
-                                <div class="form-group"><label class="form-label">Телефон</label><input type="tel" class="form-control"></div>
+                                <div class="form-group"><label class="form-label">Телефон *</label><input type="tel" class="form-control"></div>
                             </div>
                             <div class="col-xl-12">
-                                <div class="form-group"><label class="form-label">Ваш вопрос</label><textarea class="form-control"></textarea></div>
+                                <div class="form-group"><label class="form-label">Ваш вопрос *</label><textarea class="form-control"></textarea></div>
                             </div>
                             <div class="col-xl-12"><button class="form-btn" type="submit">Отправить</button></div>
                         </div>
@@ -746,16 +741,16 @@
                     <form class="container">
                         <div class="row">
                             <div class="col-xl-6">
-                                <div class="form-group"><label class="form-label">Имя</label><input type="text" class="form-control"></div>
+                                <div class="form-group"><label class="form-label">Имя *</label><input type="text" class="form-control"></div>
                             </div>
                             <div class="col-xl-6">
                                 <div class="form-group"><label class="form-label">Email</label><input type="email" class="form-control"></div>
                             </div>
                             <div class="col-xl-6">
-                                <div class="form-group"><label class="form-label">Телефон</label><input type="tel" class="form-control"></div>
+                                <div class="form-group"><label class="form-label">Телефон *</label><input type="tel" class="form-control"></div>
                             </div>
                             <div class="col-xl-6">
-                                <div class="form-group"><label class="form-label">Ваша цена</label><input type="number" class="form-control"></div>
+                                <div class="form-group"><label class="form-label">Ваша цена *</label><input type="number" class="form-control"></div>
                             </div>
                             <div class="col-xl-12">
                                 <div class="form-group"><label class="form-label">Ваши пожелания</label><textarea class="form-control"></textarea></div>
@@ -778,13 +773,13 @@
                     <form class="container">
                         <div class="row">
                             <div class="col-xl-6">
-                                <div class="form-group"><label class="form-label">Имя</label><input type="text" class="form-control"></div>
+                                <div class="form-group"><label class="form-label">Имя *</label><input type="text" class="form-control"></div>
                             </div>
                             <div class="col-xl-6">
-                                <div class="form-group"><label class="form-label">Email </label><input type="email" class="form-control"></div>
+                                <div class="form-group"><label class="form-label">Email</label><input type="email" class="form-control"></div>
                             </div>
                             <div class="col-xl-6">
-                                <div class="form-group"><label class="form-label">Телефон</label><input type="tel" class="form-control"></div>
+                                <div class="form-group"><label class="form-label">Телефон *</label><input type="tel" class="form-control"></div>
                             </div>
                             <div class="col-xl-6">
                                 <div class="form-group"><label class="form-label">До какого числа бронируем?</label><input type="datetime-local" class="form-control"></div>
@@ -799,11 +794,40 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="OnlineShow">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Заявка на онлайн показ автомобиля ID ......</h5>
+                    <button type="button" class="material-icons" data-bs-dismiss="modal">close</button>
+                </div>
+                <div class="modal-product-single-form">
+                    <form class="container">
+                        <div class="row">
+                            <div class="col-xl-6">
+                                <div class="form-group"><label class="form-label">Имя *</label><input type="text" class="form-control"></div>
+                            </div>
+                            <div class="col-xl-6">
+                                <div class="form-group"><label class="form-label">Телефон *</label><input type="tel" class="form-control"></div>
+                            </div>
+                            <div class="col-xl-6">
+                                <div class="form-group"><label class="form-label">Какой у вас мессенджер? *</label><input type="tel" class="form-control"></div>
+                            </div>
+                            <div class="col-xl-6">
+                                <div class="form-group"><label class="form-label">Когда с вами связаться?</label><input type="datetime-local" class="form-control"></div>
+                            </div>
+                            <div class="col-xl-12"><button class="form-btn" type="submit">Отправить заявку</button></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="modal fade" id="modalReport">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Получить отчет об автомобиле</h5>
+                    <h5 class="modal-title">Получить отчет об автомобиле ID ......</h5>
                     <button type="button" class="material-icons" data-bs-dismiss="modal">close</button>
                 </div>
                 <div class="modal-product-single-form">
@@ -811,7 +835,7 @@
                         <div class="row">
                             <div class="col-xl-12">
                                 <div class="form-group">
-                                    <label class="form-label">Ваш Email</label><input type="email" class="form-control"></div>
+                                    <label class="form-label">Ваш Email *</label><input type="email" class="form-control"></div>
                             </div>
                         </div>
                         <div class="col-xl-12"><button class="form-btn" type="submit">Запросить</button></div>
@@ -824,7 +848,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Сообщить об изменении цены</h5>
+                    <h5 class="modal-title">Сообщить об изменении цены на автомобиль ID ......</h5>
                     <button type="button" class="material-icons" data-bs-dismiss="modal">close</button>
                 </div>
                 <div class="modal-product-single-form">
@@ -832,7 +856,7 @@
                         <div class="row">
                             <div class="col-xl-12">
                                 <div class="form-group">
-                                    <label class="form-label">Ваш Email</label><input type="email" class="form-control"></div>
+                                    <label class="form-label">Ваш Email *</label><input type="email" class="form-control"></div>
                             </div>
                         </div>
                         <div class="col-xl-12"><button class="form-btn" type="submit">Запросить</button></div>
@@ -841,7 +865,28 @@
             </div>
         </div>
     </div>
+	<div class="modal fade" id="callBack">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Купите автомобиль ID ...... с доставкой на дом</h5>
+                    <button type="button" class="material-icons" data-bs-dismiss="modal">close</button>
+                </div>
+                <div class="modal-product-single-form">
+                    <form class="container">
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <div class="form-group">
+                                    <label class="form-label">Ваш телефон *</label><input type="email" class="form-control"></div>
+                            </div>
+                        </div>
+                        <div class="col-xl-12"><button class="form-btn" type="submit">Заказать звонок</button></div>
+                </div>
+                </form>
+            </div>
+        </div>
     </div>
+
     <footer class="footer-part">
         <div class="container">
             <div class="row">

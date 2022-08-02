@@ -35,7 +35,48 @@ $(document).ready(function() {
     hideOpenBtns();
 
     /*Карта*/
-    buildMap();
+    try {
+        buildMap();
+    }
+    catch(e) {
+        console.log('Ошибка (Карта): ' + e.name + ":" + e.message);
+        console.log(e.stack);
+    }
+
+    /*Фильтры марки и модели*/
+    try {
+        anyBrandChecked('#filterBrands','#filterModels');
+        $('#filterBrands input[type="checkbox"').each(function() {
+            toggleModels($(this).attr('id'),'#filterModels', this.checked);
+        })
+        $('#filterBrands input[type="checkbox"').click(function(event) {
+            toggleModels($(this).attr('id'),'#filterModels', this.checked);
+        })
+    }
+    catch(e) {
+        console.log('Ошибка (Фильтр марки и модели): ' + e.name + ":" + e.message + "\n" + e.stack);
+    }
+
+
+    $('[data-open="#inventoryAside"]').on('click', function(event) {
+        var collapseSelector = $(this).data('open');
+        var collapseElement = $(collapseSelector);
+        var collpaseInstance = bootstrap.Collapse.getOrCreateInstance(collapseElement);
+
+        if (!collapseElement.hasClass('show')) {
+            collpaseInstance.show();
+        }
+        else {
+            collpaseInstance.hide();
+            // $([document.documentElement, document.body]).animate(
+            // {
+            //     scrollTop: $(collapseSelector).offset().top - $('.header-part').outerHeight() - 50,
+            // },200,
+            // function() {
+            //     collpaseInstance.hide();
+            // });
+        }
+    });
 
 }); //$(document).ready
 
@@ -162,12 +203,38 @@ function changeMark(markEl) {
     }
 };
 
+/*Фильтры марки и модели*/
+function toggleModels(brand, modelBoxSelector, show = true) {
+    $(modelBoxSelector + ' [data-brand="'+brand+'"]').each(function(index) {
+        if (show) {
+            $(this).addClass('active');
+        }
+        else {
+            $(this).removeClass('active');
+            $(this).find('input:checked').prop('checked',false);
+        }
+    })
+    anyBrandChecked('#filterBrands','#filterModels');
+}
+
+function anyBrandChecked(parentBrands, parentModels) {
+    let checked = $(parentBrands + ' input:checked');
+    if (checked.length > 0) {
+        $(parentModels).removeClass('inactive');
+    }
+    else {
+        $(parentModels).addClass('inactive');
+    }
+
+}
+
+
+
 /*Кнопки скрытия-раскрытия текста*/
 const ATR_OPEN_BTN = 'data-open-text';
 
 function hideOpenBtns() {
     var btns = document.querySelectorAll('*[' + ATR_OPEN_BTN + ']');
-    console.log(btns);
     for (btn of btns) {
         btn.addEventListener('click', function(event) {
             event.preventDefault();
@@ -196,9 +263,13 @@ function hideOpenBtns() {
 
 function buildMap() {
     var map = document.getElementById('map');
-    console.log(map);
+    if (!map) {
+        return;
+    }
     var center = map.dataset.center.split(',');
-    console.log(center);
+    if (!center) {
+        return;
+    }
     ymaps.ready(function () {
     var myMap = new ymaps.Map('map', {
             center: [center[0], center[1]],

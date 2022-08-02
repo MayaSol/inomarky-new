@@ -20,15 +20,15 @@ module.exports = {
       xl: ['24px', '32px'],
       xxl: ['28px', '34px']
     },
-      extend: {
-        spacing: {
-          "25": "25px"
-        },
+    extend: {
+      spacing: {
+        "25": "25px"
+      },
       colors: {
         gray: {
           50: '#fdf8f6',
           100: '#f2e8e5',
-          200: '#eaddd7',
+          200: '#f1f2f3',
           300: '#e0cec7',
           400: '#d2bab0',
           500: '#5e5d72',
@@ -37,8 +37,13 @@ module.exports = {
           800: '#846358',
           900: '#43302b',
         },
+      },
+      gridTemplateColumns: {
+        // Complex site-specific column configuration
+        '1/2': '1fr 2fr',
+        '1/3': '1fr 3fr'
       }
-      }
+    }
   },
   plugins: [
     require('@tailwindcss/aspect-ratio'),

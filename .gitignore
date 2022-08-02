@@ -8,6 +8,7 @@ vendor/slickslider/*
 !vendor/slickslider/ltr-slick-custom.js
 vendor/venobox/*
 initial/
+deploy/
 old/
 css/**/*
 *.sublime-*
