@@ -1,10 +1,10 @@
-============================================================================
+!!!============================================================================
 npm run build
 - коспилирует input.css, который объединяет css/style.css, css/ltr.min.css и tailwind
 - итоговый файл dist/ltr.min.css
 
 Для копирования изменений скопировать ltr.min.css с сервера и сравнить с dist/ltr.min.css
-=============================================================================
+!!!=============================================================================
 
 
 
@@ -24,12 +24,24 @@ https://mironmahmud.com/ghurnek/assets/ltr/inventory-list.html
 и еще маленький гештальт по иномаркам
 можно в шапке при скролинге чтобы лого вот этот подставлялся http://new.inomarkispb.ru/image/catalog/logo_black.png
 
+
+Добавить обертку <div class="header-logo__img header-logo__img--regular"> для логотипа и блок с новым логотипом <div class="header-logo__img header-logo__img--sticky">...</div>
+
+        <div class="header-logo">
+            <div class="header-logo__img header-logo__img--regular">
+                <img title="inomarkispb" alt="inomarkispb" src="http://new.inomarkispb.ru/image/catalog/logo_white.png" alt="logo">
+            </div>
+            <div class="header-logo__img header-logo__img--sticky">
+                <img title="inomarkispb" alt="inomarkispb" src="http://new.inomarkispb.ru/image/catalog/logo_black.png" alt="logo">
+            </div>
+        </div>
+
 и еще сразу добивочка по иномаркам
 http://new.inomarkispb.ru/cars/
-- не влезает цена в одну строчку
++ - не влезает цена в одну строчку 
 - http://joxi.ru/n2Y8QYyuZ0Z9dm тут пропали стрелочки
 
-http://new.inomarkispb.ru/ загрузил новый слайд, он вроде такого же размера как шаблонный, но почему тому показывается не также
++ http://new.inomarkispb.ru/ загрузил новый слайд, он вроде такого же размера как шаблонный, но почему тому показывается не также
 
 
 

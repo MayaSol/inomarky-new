@@ -180,11 +180,11 @@ textarea::placeholder {
     border-radius: 6px;
     padding: 0 20px 2px;
     color: #5e5d72;
-    background: #fff;
+    background-color: #fff;
     border: 1px solid #e3e3e3
 }
 .form-control:focus-within {
-    background: #fff;
+    background-color: #fff;
     border-color: #477CDB;
     box-shadow: none;
     outline: 0
@@ -215,7 +215,7 @@ textarea::placeholder {
     letter-spacing: .5px;
     text-transform: uppercase;
     color: #fff;
-    background: #477CDB
+    background-color: #477CDB
 }
 .form-check {
     margin-bottom: 18px
@@ -286,7 +286,7 @@ textarea::placeholder {
     border-radius: 6px;
     border: none;
     color: #444;
-    background: #f1f2f3;
+    background-color: #f1f2f3;
     cursor: pointer
 }
 .file-input[type=file]::-webkit-file-upload-button,
@@ -297,7 +297,7 @@ textarea::placeholder {
     border-radius: 6px;
     border: none;
     color: #444;
-    background: #f1f2f3;
+    background-color: #f1f2f3;
     cursor: pointer
 }
 .form-icon {
@@ -313,7 +313,7 @@ textarea::placeholder {
     box-shadow: 0 15px 35px 0 rgba(0, 0, 0, .1)
 }
 .form-icon.icofont-facebook {
-    background: #3b5998
+    background-color: #3b5998
 }
 @media (max-width:575px) {
 
@@ -1562,15 +1562,18 @@ textarea::placeholder {
     color: #477CDB
 }
 .product-list-meta ul {
-    display: flex
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -15px;
+    margin-right: -15px;
 }
 .product-list-meta ul li {
     font-size: 14px;
     text-transform: capitalize;
     white-space: nowrap;
     position: relative;
-    margin-left: 15px;
-    padding-left: 12px
+    padding-left: 27px;
+    padding-right: 15px;
 }
 .product-list-meta ul li::before {
     position: absolute;
@@ -1579,7 +1582,7 @@ textarea::placeholder {
     z-index: auto;
     content: "";
     top: 50%;
-    left: 0;
+    left: 15px;
     transform: translateY(-50%);
     border-radius: 50%;
     background: rgba(10, 9, 48, .5)
@@ -1591,7 +1594,8 @@ textarea::placeholder {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column
+    flex-direction: column;
+    white-space: nowrap;
 }
 .product-list-price h3 {
     font-size: 26px;
@@ -1698,7 +1702,6 @@ textarea::placeholder {
 
     .product-list-meta ul li {
         font-size: 13px;
-        margin-left: 12px
     }
 
     .product-list-price h3 {
@@ -3306,6 +3309,19 @@ textarea::placeholder {
 .header-logo img {
     height: 45px;
 }
+
+.header-logo__img--sticky {
+    display: none;
+}
+
+.sticky .header-logo__img--sticky  {
+    display: block;
+}
+
+.sticky .header-logo__img--regular {
+    display: none;
+}
+
 .header-content {
     width: 100%;
     display: flex;
