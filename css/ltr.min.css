@@ -5868,6 +5868,9 @@ textarea::placeholder {
     padding: 220px 0 165px;
     background: rgba(10, 9, 48, .65)
 }
+.banner-overlay .container {
+    min-height: 380px;
+}
 .banner-content {
     max-width: 580px;
     color: #f1f2f3
@@ -5913,6 +5916,7 @@ textarea::placeholder {
     margin-top: 3px;
     font-size: 18px
 }
+
 @media (max-width:767px) {
     .banner-overlay {
         padding: 145px 0 100px
@@ -5921,7 +5925,28 @@ textarea::placeholder {
     .banner-content h1 {
         font-size: 43px
     }
+
+    .banner-overlay .container {
+        min-height: 480px;
+    }
 }
+
+@media (max-width:360px) {
+    .banner-overlay {
+        padding: 145px 0 100px
+    }
+
+    .banner-content h1 {
+        font-size: 43px
+    }
+
+    .banner-overlay .container {
+        min-height: 535px;
+    }
+}
+
+
+
 @media (min-width:768px) and (max-width:991px) {
     .banner-overlay {
         padding: 165px 0 120px
@@ -5929,9 +5954,11 @@ textarea::placeholder {
 }
 @media (min-width:992px) and (max-width:1199px) {
     .banner-overlay {
-        padding: 205px 0 150px
+        padding: 205px 0 150px;
+        min-height: ;
     }
 }
+
 .feature-part {
     padding: 100px 0;
     background: #0a0930;
