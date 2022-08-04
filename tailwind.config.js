@@ -41,7 +41,10 @@ module.exports = {
       gridTemplateColumns: {
         // Complex site-specific column configuration
         '1/2': '1fr 2fr',
-        '1/3': '1fr 3fr'
+        '1/3': '1fr 3fr',
+      },
+      gridTemplateRows: {
+        'auto/1fr': 'auto 1fr',
       }
     }
   },
