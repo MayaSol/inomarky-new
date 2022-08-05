@@ -1,6 +1,6 @@
 !!!============================================================================
 npm run build
-- коспилирует input.css, который объединяет css/style.css, css/ltr.min.css и tailwind
+- компилирует input.css, который объединяет css/style.css, css/ltr.min.css и tailwind
 - итоговый файл dist/ltr.min.css
 
 Для копирования изменений скопировать ltr.min.css с сервера и сравнить с dist/ltr.min.css
@@ -23,9 +23,49 @@ https://mironmahmud.com/ghurnek/assets/ltr/inventory-list.html
 04.08.2022
 ========================================
 1. тут слетел крестик http://joxi.ru/GrqynKRT4ZMMjr
++
 
 2. габергер сделать слева от лого, без кружка, только полоски белые, пожирнее и убрать слово "меню"
 и выровнять все это по  общей сетке?
+
+ <div class="city-switcher - mr-4
+
+
+-----------------------------------
+Добавить внутрь <header class="header-part"> <div class="header-part__inner">
+ <header class="header-part">
+        <div class="header-part__inner">
+            ...
+        </div<
+</header>
+
+Блок с гамбургером заменить на новый и сделать первым в  <header class="header-part">:
+
+    <button type="button" class="header-widget sidebar-open">
+        <i class="material-icons">menu</i>
+    </button>
+
+
+<div class="header-logo">...</div> поставить после гамбургера
+
+Убрать блок внутри <div class="sidebar-header">:
+            <div class="header-logo">
+                <img title="inomarkispb" alt="inomarkispb" src="http://new.inomarkispb.ru/image/catalog/logo_white.png" alt="logo">
+            </div>
+
+
+Поменять блоки <div class="city-switcher-wrapper на новые из примера
+
+
+
+
+
+
+
+----------
+css/ltr.min.css
+
+css/style.css - убрать
 
 
 
