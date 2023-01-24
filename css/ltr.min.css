@@ -3767,7 +3767,7 @@ textarea::placeholder {
     position: fixed;
     width: 100%;
     height: auto;
-    z-index: 6;
+    z-index: 20;
     transition: all linear .3s;
     -webkit-transition: all linear .3s;
     -moz-transition: all linear .3s;
@@ -3816,21 +3816,22 @@ textarea::placeholder {
     justify-content: center
 }
 
-@media (min-width:  1920px) {
+@media (min-width: 1920px) {
 
     .header-part__inner {
-        width: 1920px;
+        width: 1870px;
         margin-left: auto;
         margin-right: auto;
-        
+
     }
+
     .header-content {
         width: 45%;
     }
 
     .banner-slider .slick-dots {
         right: 50%;
-        margin-right: -960px;
+        margin-right: -940px;
     }
 }
 
@@ -3886,7 +3887,7 @@ textarea::placeholder {
 }
 
 .sticky .header-widget i {
-    color:  #000;
+    color: #000;
 }
 
 .header-user i {
@@ -4008,7 +4009,7 @@ textarea::placeholder {
 }
 
 .header-part .city-call-phone {
-    color:  #fff;
+    color: #fff;
 }
 
 .header-part.sticky .city-call-phone {
@@ -4020,8 +4021,9 @@ textarea::placeholder {
 }
 
 .city-select__item {
-    padding: 5px 10px;
-    cursor:  pointer;
+    padding: 5px 15px 10px 5px;
+    text-align: right;
+    cursor: pointer;
 }
 
 .city-select__item--active,
@@ -4045,12 +4047,12 @@ textarea::placeholder {
     margin-right: 15px;
 }
 
-.header-part .city-call-phone  {
+.header-part .city-call-phone {
     min-width: 160px;
 }
 
-@media (min-width:  1440px) {
-    .header-part .city-switcher-wrapper .dropdown  {
+@media (min-width: 1440px) {
+    .header-part .city-switcher-wrapper .dropdown {
         width: auto;
     }
 
@@ -4154,7 +4156,7 @@ textarea::placeholder {
         flex-direction: column
     }
 
-    .header-logo,
+    .header-content,
     .header-form,
     .header-user,
     .header-btn {
@@ -4198,20 +4200,13 @@ textarea::placeholder {
         width: 150px
     }
 
-    .header-widget i {
-        width: 36px;
-        height: 36px;
-        font-size: 22px;
-        line-height: 34px
-    }
-
     .header-widget span {
         display: none
     }
 }
 
 @media (min-width:992px) and (max-width:1199px) {
-/*    .header-logo {
+    /*    .header-logo {
         margin-right: 30px
     }*/
 
@@ -4220,7 +4215,7 @@ textarea::placeholder {
         display: none
     }
 
-/*    .header-btn {
+    /*    .header-btn {
         margin-left: 30px
     }*/
 }
@@ -4235,7 +4230,7 @@ textarea::placeholder {
     position: fixed;
     width: 320px;
     height: 100%;
-    z-index: 10;
+    z-index: 50;
     left: -350px;
     top: 0;
     background: #fff;
@@ -4258,8 +4253,9 @@ textarea::placeholder {
     display: flex;
     align-items: center;
     justify-content: space-between;
-/*    border-bottom: 1px solid #e3e3e3;
-*/    padding: 15px 15px 12px
+    /*    border-bottom: 1px solid #e3e3e3;
+*/
+    padding: 15px 15px 12px
 }
 
 .sidebar-header a img {
@@ -9841,12 +9837,12 @@ textarea::placeholder {
 .ya-share2__container_size_l .ya-share2__badge .ya-share2__icon {
     width: 45px !important;
     height: 42px !important;
-    background-size:  32px 32px !important;
+    background-size: 32px 32px !important;
     background-position: center;
     background-repeat: no-repeat;
 }
 
-.ya-share2__list.ya-share2__list_direction_horizontal > .ya-share2__item {
+.ya-share2__list.ya-share2__list_direction_horizontal>.ya-share2__item {
     margin-right: 15px !important;
     margin-bottom: 15px !important;
 }
@@ -9855,9 +9851,25 @@ textarea::placeholder {
     border-radius: 6px !important;
 }
 
-@media (max-width:  480px) {
+@media (max-width: 480px) {
     .ya-share2__container_size_l .ya-share2__badge .ya-share2__icon {
-        width:  32px !important;
+        width: 32px !important;
         height: 32px !important;
+    }
+}
+
+/**/
+@media(min-width: 768px) {
+    .popular__content {
+        display: grid;
+        grid-template-columns:  1fr 1fr 1fr;
+    }
+
+    .popular__item {
+        width: 100%;
+    }
+
+    .category-card {
+        justify-content: center
     }
 }

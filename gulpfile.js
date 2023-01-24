@@ -48,13 +48,8 @@ function archiveFiles(done) {
       const files = [
       // 'css/*.css',
       // 'css/*sources/main/*.{css,scss}',
-      'css/style_i1.css',
-      'css/style.css',
-      'css/modal.css',
-      'js/main.js',
-      'js/modal.js',
-      './index.html',
-      './promo.html'
+      'css/ltr.min.css',
+      'js/script.js',
       // 'js/second/script_second.js',
       // 'css/bootstrap.min.css'
     ];
@@ -429,7 +424,7 @@ gulp.task('svg', gulp.series(generateSvgSprite));
 
 
 function htmlDeploy(done) {
-  files = ['index.html'];
+  files = ['index.html','cars.html'];
   path = './deploy/'
   files.forEach(function(file) {
     let fileContent = fs.readFileSync(file, "utf8");
@@ -443,6 +438,14 @@ function htmlDeploy(done) {
     fileContent = fileContent.replace(
       regScript,
       'http://maiiasol.ru/inomarki/');
+    regScript = new RegExp('/fonts/material/icon.woff2');
+    fileContent = fileContent.replace(
+      regScript,
+      'http://maiiasol.ru/inomarki/fonts/material/icon.woff2');
+    regScript = new RegExp('/fonts/material/icon.css');
+    fileContent = fileContent.replace(
+      regScript,
+      'http://maiiasol.ru/inomarki/css/icon.css');
 
     // let regScript = new RegExp(`<script src="\/js\/`,'g');
     // fileContent = fileContent.replace(regScript, `<script src="/peugeout/js/`);
@@ -491,6 +494,13 @@ function htmlDeploy(done) {
   });
 
   done();
+}
+
+
+function insertBeforeLastOccurrence(strToSearch, strToFind, strToInsert) {
+    var n = strToSearch.lastIndexOf(strToFind);
+    if (n < 0) return strToSearch;
+    return strToSearch.substring(0,n) + strToInsert + strToSearch.substring(n);    
 }
 
 function cssTmp(done) {

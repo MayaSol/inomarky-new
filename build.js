@@ -5,7 +5,6 @@ const SvgStore = require("webpack-svgstore");
 
 console.log(path.resolve(__dirname, './index.js'));
 
-
 const compiler = webpack({
     entry: {
         main: path.resolve(__dirname, './index.js'),

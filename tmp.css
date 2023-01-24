@@ -1,0 +1,17 @@
+@media (min-width: 768px) {
+    .popular__content {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+    }
+
+    .popular__item:nth-last-child,
+    .popular__item:nth-last-child(-1) {
+        grid-column-span: 1;
+        grid-column-end: 3;
+    }
+
+    .popular__item:nth-last-child(-1) {
+        grid-column-span: 3;
+        grid-column-end: 5;
+    }
+}
