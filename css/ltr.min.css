@@ -490,10 +490,11 @@ textarea::placeholder {
     }
 }
 .slider-dots ul {
-    position: absolute;
+   /* position: absolute;*/
     bottom: 20px;
     left: 50%;
-    transform: translateX(-50%)
+    /*transform: translateX(-50%)*/
+	padding-right: 10px;
 }
 .slider-dots ul li {
     width: 9px;
@@ -6298,6 +6299,17 @@ textarea::placeholder {
 .blog-slider .bamdik {
     top: 35%
 }
+
+/*Фильтр списка автомобилей по маркам
+*/
+.inventory-aside .product-widget-btn {
+    margin-bottom: 15px;
+}
+
+.inventory-aside .product-widget-btn:last-child {
+    margin-bottom: 0;
+}
+
 .inventory-feature {
     padding: 30px 15px;
     border-radius: 6px;
@@ -6456,20 +6468,6 @@ textarea::placeholder {
 .product-single-data li.rating {
     background: #e86121
 }
-
-@media (max-width:  470px) {
-
-    .product-single-data {
-        display:  flex;
-    }
-
-    .product-single-data li {
-        width:  0;
-        flex-grow: 1;
-    }
-}
-
-
 .product-single-action {
     display: -ms-grid;
     display: grid;
