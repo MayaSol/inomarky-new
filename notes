@@ -20,13 +20,91 @@ http://new.inomarkispb.ru
 http://inomarkispb.ru
 
 
-https://docs.yandex.ru/docs/view?url=ya-disk-public%3A%2F%2FIlIZB%2FUtEtajpo6h141%2FceSg1yZRo8SoMfnMbNVxJ8twi1b9xMeONpCZObEkSdzmq%2FJ6bpmRyOJonT3VoXnDag%3D%3D&name=Задача%20на%20перенос%20шаблона%20(верстка).docx&nosw=1
-
 https://yadi.sk/d/w8f2jkaFO5pmfQ
 
 Пример:
 https://mironmahmud.com/ghurnek/assets/ltr/inventory-list.html
 
+==============================================================
+Производительность
+===============================================================
+https://app.moo.team/projects/4410/tasks/174883
+
+
+---------------------------------------------------------------
+Можно отсрочить: 
+
+<script src="catalog/view/javascript/brainyfilter.js" type="text/javascript"></script>
+
+<link href="/vendor/venobox/venobox.min.css" type="text/css" rel="stylesheet" media="screen" />
+
+<script src="/vendor/slickslider/slick.min.js" type="text/javascript"></script> - добавить стили, чтобы слайдер нормально выглядел до загрузки
+
+<script src="/vendor/slickslider/slick.min.js" type="text/javascript"></script>
+                    <script src="/vendor/slickslider/ltr-slick-custom.js" type="text/javascript"></script>
+- объединить
+
+
+        <script src="/vendor/venobox/venobox.min.js" type="text/javascript"></script>
+                    <script src="/vendor/venobox/venobox-custom.js" type="text/javascript"></script>
+                    - объединить, отложить
+
+<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=e470ae02-a4b8-471a-bde6-d4a12def6e51" type="text/javascript"></script>
+
+<script src="/js/accordion.js" type="text/javascript"></script>
+---------------------------------------------------------------
+
+
+---------------------------------------------------------------
+Добавить async:
+
+<!-- Yandex.Metrika counter -->  
+--------------------------------------------------------------
+
+
+1. Убрать <script src="https://vk.com/js/api/openapi.js?169" type="text/javascript"></script>
+
+Вместо 
+
+<div id="vk_community_messages"></div>
+<script type="text/javascript">
+VK.Widgets.CommunityMessages("vk_community_messages", 111826677, {tooltipButtonText: "Есть вопрос?"});
+</script>
+
+поставить
+
+<div id="vk_community_messages"></div>
+<script type="text/javascript">
+    const documentReady = function (fn) {
+      if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        fn();
+      } else {
+        document.addEventListener('DOMContentLoaded', fn);
+      }
+    };
+
+    window.vkAsyncInit = function() {
+        console.log('vkAsyncInit');
+        VK.Widgets.CommunityMessages("vk_community_messages", 111826677, {tooltipButtonText: "Есть вопрос?"});
+    };
+    var scriptLoaded = false;
+    window.addEventListener('load', function() {
+        documentReady(function() {
+            console.log('documentReady');
+            console.log(scriptLoaded);
+            if (!scriptLoaded) {
+                    setTimeout(function() {
+                    var el = document.createElement("script");
+                    el.type = "text/javascript";
+                    el.src = "https://vk.com/js/api/openapi.js?169";
+                    el.async = true;
+                    document.getElementById("vk_community_messages").appendChild(el);
+                    scriptLoaded = true;
+                }, 3000);
+            }
+        });
+    })
+</script>
 
 =======================================
 27.02.2023

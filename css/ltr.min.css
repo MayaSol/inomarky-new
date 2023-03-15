@@ -123,7 +123,8 @@ button:focus {
     box-shadow: none !important
 }
 
-.btn i {
+.btn i,
+.btn .material-icons {
     font-size: 22px;
     margin-right: 5px;
     vertical-align: middle
@@ -2107,7 +2108,7 @@ textarea::placeholder {
     top: 0;
     bottom: 0;
     width: 100%;
-    z-index:  1;
+    z-index: 1;
 }
 
 .product-feature-btn {
@@ -2197,7 +2198,8 @@ textarea::placeholder {
     color: #fff
 }
 
-.funfactor-card i {
+.funfactor-card i,
+.funfactor-card em {
     flex-shrink: 0;
     width: 50px;
     height: 50px;
@@ -2213,7 +2215,8 @@ textarea::placeholder {
     position: relative
 }
 
-.funfactor-card i::before {
+.funfactor-card i::before,
+.funfactor-card em::before {
     position: absolute;
     content: "";
     top: 50%;
@@ -2975,12 +2978,14 @@ textarea::placeholder {
 }
 
 .feature-card:hover i,
+.feature-card:hover em,
 .feature-card:hover h3,
 .feature-card:hover p {
     color: #fff
 }
 
-.feature-card i {
+.feature-card i,
+.feature-card em {
     font-size: 60px;
     margin-bottom: 25px;
     color: #477CDB;
@@ -10391,7 +10396,7 @@ textarea::placeholder {
         flex-wrap: nowrap
     }
 
-    .md\:\ !pb-4 {
+    .md\:\!pb-4 {
         padding-bottom: 1rem !important
     }
 }
@@ -10417,7 +10422,7 @@ textarea::placeholder {
         margin-bottom: 0px
     }
 
-    .lg\:\ !block {
+    .lg\:\!block {
         display: block !important
     }
 
