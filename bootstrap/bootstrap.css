@@ -632,7 +632,7 @@ progress {
 }
 
 .blockquote-footer::before {
-    content: "— "
+    content: "вЂ”В "
 }
 
 .img-fluid {

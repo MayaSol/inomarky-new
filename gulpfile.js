@@ -23,6 +23,7 @@ const concat = require('gulp-concat');
 const insert = require('gulp-insert');
 const svgstore = require('gulp-svgstore');
 // const tailwindcss = require('tailwindcss');
+const penthouse = require('penthouse');
 
 // Список и настройки плагинов postCSS
 let postCssPlugins = [
@@ -600,6 +601,19 @@ function compileTailwind() {
 
 
 gulp.task('tailwind', gulp.series(compileTailwind));
+
+function criticalCss() {
+  penthouse({
+    url: 'https://www.inomarkispb.ru/',
+    css: 'dist/ltr.min.css'
+  })
+  .then(criticalCss => {
+    // use the critical css
+    fs.writeFileSync('critical.css', criticalCss);
+  })
+}
+
+gulp.task('criticalCss', gulp.series(criticalCss));
 
 
 // gulp.task('main', gulp.series(makeSprite,makeSass,makeConcat,cssMin));

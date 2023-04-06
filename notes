@@ -26,85 +26,232 @@ https://yadi.sk/d/w8f2jkaFO5pmfQ
 https://mironmahmud.com/ghurnek/assets/ltr/inventory-list.html
 
 ==============================================================
+06.04.2023
+==============================================================
+3. Можно модалку политики сделать примерно в 60% ширины и по центру
+6. у меня хк не изменились в отладчике http://joxi.ru/52a1aJGubDO3y2
+7. этот файл совсем не нужен? он просто еще в шаблоне блога есть https://www.inomarkispb.ru/blog/kak-vybrat-novyj-avtomobil-9-kriteriev
+
+
+
+==============================================================
+Текущие доработки
+==============================================================
+1
++ 1. https://www.inomarkispb.ru/politika
+не понял почему к таблице не применяются дефолтные стили http://joxi.ru/gmvR0jLSvMEkEm
+
+В этой таблице нет таких элементов:
+
+.table>:not(:first-child) - это все дочерние элементы, кроме первого, а в таблице только один дочерний - tbody
+
+Остальные для элементов th, которых нет в таблице
+
+
++ 2. не понял почему не срабатывает в диве класс .blog-single-title который должен задавать нижний отступ для Н заголовков
+
+Правило такое
+.blog-single-title, .blog-single-content h2, .blog-single-content h3 {
+  margin-bottom: 20px;
+}
+
+blog-single-title надо применять к самому заголовку
+А чтобы применялись отступы для всех h2 и h3 внутри блока, блоку надо задать класс blog-single-content
+
+
++ 3. В подвале ссылку "Политика конфиденциальности" сделать модалкой, за стили взять модалку на странице машины. В модалке вывести просто текст (Боря потом заменит), и сделать высоту модалке на 75% от высоты экрана.
+
+
+Добавить атрибуты data-bs-toggle="modal" data-bs-target="#modalPolicy"
+<a  data-bs-toggle="modal" data-bs-target="#modalPolicy" href="#">Политика конфиденциальности</a>
+
+Добавить блок
+<div class="modal fade" id="modalPolicy">
+
+Пример http://maiiasol.ru/inomarki/index.html
+
+
++ 4. В моб версии хочу переделать блок http://joxi.ru/5mdkOGlCepODwr
+сделать его в 1 строку, чтобы не занимал столько места. Для этого допускаю размещение подписей в этих блоках в 2 строчки, при этом придется в первом блоке делать перенос "владель-цев" или "вла-дельцев".
+
+
+5. упустил, что не работает ссылка "версия для печати" на странице машины, надо сделать формат печати с названием, ценой, айди, тех хар-ми... пока хватит
+
+
+1. Добавить классы блокам:
+
+1.1 <section class="section-gap-75 similar-cars">
+
+1.2 Где посмотреть 
+<div class="common-card where-to-see">
+
+1.3 Оцените свой автомобиль
+<div class="common-card estimate-car">
+
+1.4 Поделиться
+<div class="common-card share-soicals">
+
+2. <a href="">Версия для печати</a>
+заменить на 
+<button onclick="window.print();return false;">Версия для печати</button>
+
+3. 3аменить media="screen" на media="all"
+<link href="/css/ltr.min.css" type="text/css" rel="stylesheet" media="all" />
+
+4. Добавить в <head>:
+<link href="/css/print.css" type="text/css" rel="stylesheet" media="print" />
+
+
+6. давай переделаем хк, ..вообще информация на будущее, когда делаем сайты, или адаптируем старые десктоп версии - надо всегда делать хк для мобилы, НО делать их чтобы они не занимали более 1 строчки.
+Есть несколько вариантов, я гуглил статьи на эту тему, будем в зависимости от сайта и самих хк выбирать ту или иную схему
+для данного сайта я считаю надо делать слайдер, пример можешь посмотреть у сайта mvideo.ru
+при это давай последнее звено в хк не будет все таки выводить...только ссылки на предыдущие
+
+Добавить класс breadcrumb-wrapper в блок <div class="container relative pt-20 sm:pt-24 z-10">
++
+
+7. почему то битый файл https://www.inomarkispb.ru/catalog/view/javascript/jquery/datetimepicker/moment.js
+если не нужен - надо убрать с сайта
+
+Убрать на странице автомобиля
+<script src="catalog/view/javascript/jquery/datetimepicker/moment/moment.min.js" type="text/javascript"></script>
+
++ 8. проблема с кнопками на 1388 http://joxi.ru/brRD1d3uYnZQd2
+
+
+9. можно отрегулировать высоту по количество значений http://joxi.ru/DmBXQ7VFzxnNZA
+а также для такого случая http://joxi.ru/82QVkWRhyd01zA
++
+==============================================================
 Производительность
 ===============================================================
 https://app.moo.team/projects/4410/tasks/174883
+
+--------------------------------------------------------------
+ltr.min.css
+common.js
+utils.js
+utils.css
 
 
 ---------------------------------------------------------------
 Можно отсрочить: 
 
+
++ <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=e470ae02-a4b8-471a-bde6-d4a12def6e51" type="text/javascript"></script>
+ - убрать на главной
+ !!! Нужна на страницах автомобиля
+
+---------------------------------------------------------------
+
+
+--------------------------------------------------------------
++ Убрать:
+<script delay="/vendor/bootstrap/popper.min.js" type="text/javascript"></script>
 <script src="catalog/view/javascript/brainyfilter.js" type="text/javascript"></script>
-
-<link href="/vendor/venobox/venobox.min.css" type="text/css" rel="stylesheet" media="screen" />
-
-<script src="/vendor/slickslider/slick.min.js" type="text/javascript"></script> - добавить стили, чтобы слайдер нормально выглядел до загрузки
-
 <script src="/vendor/slickslider/slick.min.js" type="text/javascript"></script>
-                    <script src="/vendor/slickslider/ltr-slick-custom.js" type="text/javascript"></script>
-- объединить
-
-
-        <script src="/vendor/venobox/venobox.min.js" type="text/javascript"></script>
-                    <script src="/vendor/venobox/venobox-custom.js" type="text/javascript"></script>
-                    - объединить, отложить
-
-<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=e470ae02-a4b8-471a-bde6-d4a12def6e51" type="text/javascript"></script>
-
+<script src="/vendor/slickslider/ltr-slick-custom.js" type="text/javascript"></script>
+<script src="/vendor/venobox/venobox.min.js" type="text/javascript"></script>
+<script src="/vendor/venobox/venobox-custom.js" type="text/javascript"></script>
+<script src="/js/dropdown-menu.js" type="text/javascript"></script>
+<script src="/js/select-option.js" type="text/javascript"></script>
+<script src="/js/custom.js" type="text/javascript"></script>
 <script src="/js/accordion.js" type="text/javascript"></script>
----------------------------------------------------------------
+<script src="http://maiiasol.ru/inomarki/js/script.js" type="text/javascript"></script>
+<script src="/vendor/bootstrap/bootstrap.min.js" type="text/javascript"></script>
+-  объединены с другими скриптами
 
++ Добавить <script id="utils" delay="http://maiiasol.ru/inomarki/js/utils.js" type="text/javascript"></script>
+перед </body>
 
----------------------------------------------------------------
-Добавить async:
-
-<!-- Yandex.Metrika counter -->  
+!!! Для слайдеров на других страницах сделать стили для отображения до загрузки слайдера
 --------------------------------------------------------------
 
+---------------------------------------------------------------
+??? Добавить async:
 
-1. Убрать <script src="https://vk.com/js/api/openapi.js?169" type="text/javascript"></script>
+<!-- Yandex.Metrika counter -->
+--------------------------------------------------------------
+
+---------------------------------------------
++ Убрать:
+    <link href="/fonts/typography/jost.css" type="text/css" rel="stylesheet" media="screen" />
+    <link href="/fonts/icofont/icofont.css" type="text/css" rel="stylesheet" media="screen" />
+    <link href="http://maiiasol.ru/inomarki/css/icon.css" type="text/css" rel="stylesheet" media="screen" />
+    <link href="/vendor/slickslider/slick.min.css" type="text/css" rel="stylesheet" media="screen" />
+    <link href="/vendor/bootstrap/bootstrap.min.css" type="text/css" rel="stylesheet" media="screen" />
+Добавить:
+    <link href="/css/utils.css" type="text/css" rel="stylesheet" media="screen" />
+
++ Добавить media="print" onload="this.media=screen":
+    <link href="/vendor/venobox/venobox.min.css" type="text/css" rel="stylesheet" media="print" onload="this.media=screen" />
+--------------------------------------
+
+
++ 1. Убрать <script src="https://vk.com/js/api/openapi.js?169" type="text/javascript"></script>
 
 Вместо 
 
-<div id="vk_community_messages"></div>
-<script type="text/javascript">
-VK.Widgets.CommunityMessages("vk_community_messages", 111826677, {tooltipButtonText: "Есть вопрос?"});
-</script>
+    <div id="vk_community_messages"></div>
+    <script type="text/javascript">
+        VK.Widgets.CommunityMessages("vk_community_messages", 111826677, {tooltipButtonText: "Есть вопрос?"});
+    </script>
 
 поставить
 
-<div id="vk_community_messages"></div>
-<script type="text/javascript">
-    const documentReady = function (fn) {
-      if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
-        fn();
-      } else {
-        document.addEventListener('DOMContentLoaded', fn);
-      }
-    };
-
+    <div id="vk_community_messages"></div>
+    <script type="text/javascript">
     window.vkAsyncInit = function() {
         console.log('vkAsyncInit');
-        VK.Widgets.CommunityMessages("vk_community_messages", 111826677, {tooltipButtonText: "Есть вопрос?"});
+        VK.Widgets.CommunityMessages("vk_community_messages", 111826677, { tooltipButtonText: "Есть вопрос?" });
     };
     var scriptLoaded = false;
     window.addEventListener('load', function() {
-        documentReady(function() {
-            console.log('documentReady');
-            console.log(scriptLoaded);
-            if (!scriptLoaded) {
-                    setTimeout(function() {
-                    var el = document.createElement("script");
-                    el.type = "text/javascript";
-                    el.src = "https://vk.com/js/api/openapi.js?169";
-                    el.async = true;
-                    document.getElementById("vk_community_messages").appendChild(el);
-                    scriptLoaded = true;
-                }, 3000);
-            }
-        });
-    })
-</script>
+        console.log('documentReady');
+        console.log(scriptLoaded);
+        if (!scriptLoaded) {
+            setTimeout(function() {
+                var el = document.createElement("script");
+                el.type = "text/javascript";
+                el.src = "https://vk.com/js/api/openapi.js?169";
+                el.async = true;
+                document.getElementById("vk_community_messages").appendChild(el);
+                scriptLoaded = true;
+            }, 3000);
+        }
+    });
+    </script>
+
++ 2.     <script src="/vendor/jquery-3.5.0.min.js" type="text/javascript"></script>
+    <script src="http://maiiasol.ru/inomarki/catalog/view/javascript/common.js" type="text/javascript"></script>
+     - перенести из <head>, разместить перед </body>
+
+
+ -----------------------------------------
+ +lazyload
+ -----------------------------------------
+ 1. Слайдер на главной
+ Для всех слайдов, КРОМЕ ПЕРВОГО,убрать style, добавить data-src 
+ <section class="section-gap-120 banner-slider slider-count">
+    <div data-bg="http://new.inomarkispb.ru/image/cache/catalog/slides/сервис-1920x1024.jpg">
+ 2. Блоки Недавние поступления и  Лучшие подборки
+В теге <img> добавить class="lazyload" и заменить src на data-src
+<div class="product-grid-image">
+    <a href="https://www.inomarkispb.ru/cars/tver/toyota/camry/2022/4086268">
+        <img class="lazyload" data-src="https://www.inomarkispb.ru/image/cache/catalog/cars/4086268/1-360x240.jpg" alt="feature"></a>
+3. НАШИ УСЛУГИ
+В теге <img> добавить class="lazyload" и заменить src на data-src
+<div class="city-card" bis_skin_checked="1">
+    <img class="lazyload" data-src="http://inomarkispb.ru/image/cache/catalog/uslugi/350x350%20%20страхование-350x350.jpg" alt="city">
+4. Последние статьи
+В теге <img> добавить class="lazyload" и заменить src на data-src
+<div class="blog-grid-media">
+    <img class="lazyload" data-src="http://inomarkispb.ru/image/cache/catalog/blog/avtomobil-dlya-bolshoj-semi/fghrooo98-448x280.jpg" alt="blog">
+</div>
+
+
++ <link rel="preload" as="image" href="https://www.inomarkispb.ru/image/cache/catalog/slides/сервис-1920x1024.jpg"> 
+ - предзагрузка первого слайда
 
 =======================================
 27.02.2023
