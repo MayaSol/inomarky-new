@@ -24,6 +24,8 @@ const insert = require('gulp-insert');
 const svgstore = require('gulp-svgstore');
 // const tailwindcss = require('tailwindcss');
 const penthouse = require('penthouse');
+const merge = require('merge-stream');
+
 
 // Список и настройки плагинов postCSS
 let postCssPlugins = [
@@ -615,6 +617,24 @@ function criticalCss() {
 
 gulp.task('criticalCss', gulp.series(criticalCss));
 
+gulp.task('css', () => {
+  var files = ['./css/icon.css']
+
+
+  var tasks = files.map(function(file) {
+    return gulp.src(file)
+      .pipe(sourcemaps.init())
+      // .pipe(postcss([ autoprefixer({grid: 'autoplace'}) ]))
+      .pipe(cleanCSS())
+      .pipe(rename(function (path) {
+        path.extname = ".min.css";
+      }))
+      // .pipe(sourcemaps.write('.'))
+      .pipe(gulp.dest('./css'))
+  })
+
+  return merge(tasks);
+})
 
 // gulp.task('main', gulp.series(makeSprite,makeSass,makeConcat,cssMin));
 gulp.task('main', gulp.series(makeSass,makeConcat,cssMin));

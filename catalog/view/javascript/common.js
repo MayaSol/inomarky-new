@@ -2,16 +2,21 @@ $(document).ready(function() {
 
 	var scriptUtils = document.querySelector('#utils');
 
-  	var body= document.getElementsByTagName('body')[0];
-   	var script= document.createElement('script');
-   	script.type= 'text/javascript';
-   	script.src = scriptUtils.getAttribute('delay');
+    if (scriptUtils) {
+        var body= document.getElementsByTagName('body')[0];
+        var script= document.createElement('script');
+        script.type= 'text/javascript';
+        script.src = scriptUtils.getAttribute('delay');
 
-	script.addEventListener('load',function(e) {
-		initDocument();
-	});
+        script.addEventListener('load',function(e) {
+            initDocument();
+        });
 
-   body.appendChild(script);
+       body.appendChild(script);
+    }
+    else {
+        initDocument();
+    }
 
 
     //Отложенная загрузка скриптов
@@ -116,8 +121,8 @@ $(document).ready(function() {
               // isDown = false;
               // slider.classList.remove('active');
             });
-            document.addEventListener('mouseup', () => {
-                Up();
+            document.addEventListener('mouseup', (e) => {
+                Up(e);
             });
             document.addEventListener('mousemove', (e) => {
                 Move(e);
@@ -127,8 +132,8 @@ $(document).ready(function() {
             slider.addEventListener('touchstart', (e) => {
                 Down(e);
             })
-            slider.addEventListener('touchend', () => {
-                Up();
+            slider.addEventListener('touchend', (e) => {
+                Up(e);
             })
             slider.addEventListener('touchmove', (e) => {
                 Move(e);
@@ -138,30 +143,55 @@ $(document).ready(function() {
                 e.target.style.transition = '';
             });
 
+            let linkTouchStatus = 0;
+            // 1 - target - клик был по элемену с тегом 'A', перетаскивания не было
+            // 0 - target - клик был по элменту с тегом отличным от 'A' или после клика по тегу 'A' было перетаскивания
+            let touchTarget;
+            //  Если было нажатие на тег 'a', сохраняет элемент
+            let moveSum = 0;
+            // 
 
             function Down(e) {
-                console.log(e.target);
-                console.log(e.target.tagName);
-              if (e.target.tagName == 'A') {
-                return;
-              }
-              e.preventDefault();
-              isDown = true;
-              slider.classList.add('active');
-              console.log('mousedown: ' + e.pageX);
-              console.log('slider.offsetLeft: ' + slider.offsetLeft);
-              startX = e.pageX ? e.pageX : e.targetTouches[0].pageX; //точка клика относительно начала блока, transform не влияет на offsetLeft
-              console.log('startX = ' + startX);
+                console.log('Down: ' + e.target.tagName);
+                if (e.target.tagName == 'A') {
+                    linkTouchStatus = 1;
+                    touchTarget = e.target;
+                }
+                else {
+                    linkTouchStatus = 0;
+                }
+                console.log('linkTouchStatus = ' + linkTouchStatus);
+                e.preventDefault();
+                isDown = true;
+                slider.classList.add('active');
+                // console.log('mousedown: ' + e.pageX);
+                // console.log('slider.offsetLeft: ' + slider.offsetLeft);
+                startX = e.pageX ? e.pageX : e.targetTouches[0].pageX; //точка клика относительно начала блока, transform не влияет на offsetLeft
+                // console.log('startX = ' + startX);
             }
-            function Up() {
+
+
+            function Up(e) {
+                console.log('Up: linkTouchStatus = ' + linkTouchStatus);
               isDown = false;
               slider.classList.remove('active');
+              e.preventDefault();
+              console.log('UP 1: moveSum = ' + moveSum);
+              moveSum = (moveSum < 0) ? -moveSum : moveSum;
+              console.log('UP 2: moveSum = ' + moveSum);
+              console.log(linkTouchStatus == 1 && moveSum < 5);
+              if (linkTouchStatus == 1 && moveSum < 5) {
+                linkTouchStatus = 0;
+                window.location.href = touchTarget.href;
+              }
+              console.log('Up: moveSum = ' + moveSum);
+              moveSum = 0;
               if (translateX > 0) {
                 slider.style.transition = 'transform 1s ease';
                 translateX = 0;
                 slider.style.transform = 'translateX(' + translateX + 'px)'; 
-                console.log('slider.style: ' + JSON.stringify(slider.style));
-                console.log('slider.style.transition' + JSON.stringify(slider.style.transition));
+                // console.log('slider.style: ' + JSON.stringify(slider.style));
+                // console.log('slider.style.transition' + JSON.stringify(slider.style.transition));
               }
               if (translateX < minTransform) {
                 slider.style.transition = 'transform 1s ease';
@@ -170,19 +200,27 @@ $(document).ready(function() {
               }
               sliderShift = translateX;
             }
+
+
             function Move(e) {
-            console.log('move');
+                console.log('Move: linkTouchStatus = ' + linkTouchStatus);
+              console.log(e);
               if(!isDown) return;
+              // if (linkTouchStatus == 1) {
+              //   linkTouchStatus = 0;
+              // }
               e.preventDefault();
-              console.log('mousemove');
+              moveStatus = 2;
               let x = e.pageX ? e.pageX : e.targetTouches[0].pageX; //текущая точка относительно начала блока
               let walk = (x - startX); // относительное смещение если вправо +, влево -
               translateX = sliderShift + walk;
-              console.log('walk: ' + walk);
-              console.log('sliderShift: ' + sliderShift);
-              console.log('translateX: ' + translateX);
+              moveSum = moveSum + e.movementX;
+              // console.log('walk: ' + walk);
+              // console.log('sliderShift: ' + sliderShift);
+              // console.log('translateX: ' + translateX);
               slider.style.transform = 'translateX(' + translateX + 'px)'; 
-              // console.log(walk);
+              console.log('Move: e.movementX = ' + e.movementX);
+              console.log('Move: moveSum = ' + moveSum);
             }
         }
     }
