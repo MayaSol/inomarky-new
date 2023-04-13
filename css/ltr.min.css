@@ -4,6 +4,11 @@ body {
     font-family: 'Jost', sans-serif;
 }
 
+.material-icons {
+    font-size: 24px;
+    line-height: 1;
+}
+
 h2,
 h3,
 h4,

@@ -19,11 +19,30 @@ http://new.inomarkispb.ru
 
 http://inomarkispb.ru
 
-
 https://yadi.sk/d/w8f2jkaFO5pmfQ
 
 Пример:
 https://mironmahmud.com/ghurnek/assets/ltr/inventory-list.html
+
+==============================================================
+13.04.2023
+==============================================================
+1. стрелки поправились, а вот комплектации так и не открываются
+Заменить файлы на utils.js
+
+2. тут http://joxi.ru/1A5b3RquG1gBJr если можно заодно поправить чтобы стрелки навигации слайдера по центру вертикали картинок стали
+
+3. http://joxi.ru/bmooqBDS9Xpjzm
+
+После правого клика мышью ?
+Прокрутка короткого слайдера    
+
+==============================================================
+12.04.2023
+==============================================================
+css/icon.min.css
+dist/ltr.min.css
+
 
 ==============================================================
 06.04.2023
@@ -149,7 +168,7 @@ utils.css
 
 --------------------------------------------------------------
 + Убрать:
-<script delay="/vendor/bootstrap/popper.min.js" type="text/javascript"></script>
+<script src="/vendor/bootstrap/popper.min.js" type="text/javascript"></script>
 <script src="catalog/view/javascript/brainyfilter.js" type="text/javascript"></script>
 <script src="/vendor/slickslider/slick.min.js" type="text/javascript"></script>
 <script src="/vendor/slickslider/ltr-slick-custom.js" type="text/javascript"></script>
@@ -163,7 +182,7 @@ utils.css
 <script src="/vendor/bootstrap/bootstrap.min.js" type="text/javascript"></script>
 -  объединены с другими скриптами
 
-+ Добавить <script id="utils" delay="http://maiiasol.ru/inomarki/js/utils.js" type="text/javascript"></script>
++ Добавить <script id="utils" delay="/js/utils.js" type="text/javascript"></script>
 перед </body>
 
 !!! Для слайдеров на других страницах сделать стили для отображения до загрузки слайдера
