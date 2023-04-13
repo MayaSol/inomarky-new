@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const SvgStore = require("webpack-svgstore");
-
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 console.log(path.resolve(__dirname, './index.js'));
 
 const compiler = webpack({
@@ -13,7 +13,7 @@ const compiler = webpack({
         filename: "[name].bundle.js",
         publicPath: './'
     },
-    mode: 'development',
+    mode: 'production',
     module: {
         rules: [{
                 test: /\.css$/,
@@ -38,6 +38,13 @@ const compiler = webpack({
                 }
             ]
         }]
+    },
+    optimization: {
+        minimizer: [
+          // For webpack@5 you can use the `...` syntax to extend existing minimizers (i.e. `terser-webpack-plugin`), uncomment the next line
+          // `...`,
+          new CssMinimizerPlugin(),
+        ],
     },
     plugins: [
         new MiniCssExtractPlugin({

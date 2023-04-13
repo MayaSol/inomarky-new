@@ -104,6 +104,23 @@ $(document).ready(function() {
         console.log(slider);
         console.log(slider.offsetLeft);
         if (slider) {
+            var sliderLinks = slider.querySelectorAll('a');
+            console.log(sliderLinks);
+            //Переход по ссылке только в ф-ции Up
+            for (var i=0; i<sliderLinks.length; i++) {
+                sliderLinks[i].addEventListener('click',function(event) {
+                    console.log('link click');
+                    event.preventDefault();
+                })
+            }
+            // slider.addEventListener('click', function(event) {
+            //     console.log('slider click');
+            //     if (event.target.tagName == 'A') {
+            //         console.log('slider click target tagName == "A" ');
+            //         event.preventDefault();
+            //     }
+            // });
+
             let lastElement = slider.querySelector('li:last-child');
             let sliderWidth = lastElement.offsetLeft + lastElement.offsetWidth;
             slider.style.width = sliderWidth + "px";
@@ -143,31 +160,37 @@ $(document).ready(function() {
                 e.target.style.transition = '';
             });
 
-            let linkTouchStatus = 0;
+            var linkTouchStatus = 0;
             // 1 - target - клик был по элемену с тегом 'A', перетаскивания не было
             // 0 - target - клик был по элменту с тегом отличным от 'A' или после клика по тегу 'A' было перетаскивания
-            let touchTarget;
+            var touchTarget;
             //  Если было нажатие на тег 'a', сохраняет элемент
-            let moveSum = 0;
+            var moveSum = 0;
             // 
+            var firstTouch;
+            // Куда нажали пальцем
 
             function Down(e) {
                 console.log('Down: ' + e.target.tagName);
-                if (e.target.tagName == 'A') {
-                    linkTouchStatus = 1;
-                    touchTarget = e.target;
+                console.log(e);
+                //Если событие touchstart или нажата левая кнопка мыши
+                if (e.changedTouches || e.button == 0) {
+                    if (e.target.tagName == 'A') {
+                        linkTouchStatus = 1;
+                        touchTarget = e.target;
+                    }
+                    else {
+                        linkTouchStatus = 0;
+                    }
+                    console.log('linkTouchStatus = ' + linkTouchStatus);
+                    e.preventDefault();
+                    isDown = true;
+                    slider.classList.add('active');
+                    // console.log('mousedown: ' + e.pageX);
+                    // console.log('slider.offsetLeft: ' + slider.offsetLeft);
+                    startX = e.pageX ? e.pageX : e.targetTouches[0].pageX; //точка клика относительно начала блока, transform не влияет на offsetLeft
+                    // console.log('startX = ' + startX);
                 }
-                else {
-                    linkTouchStatus = 0;
-                }
-                console.log('linkTouchStatus = ' + linkTouchStatus);
-                e.preventDefault();
-                isDown = true;
-                slider.classList.add('active');
-                // console.log('mousedown: ' + e.pageX);
-                // console.log('slider.offsetLeft: ' + slider.offsetLeft);
-                startX = e.pageX ? e.pageX : e.targetTouches[0].pageX; //точка клика относительно начала блока, transform не влияет на offsetLeft
-                // console.log('startX = ' + startX);
             }
 
 
@@ -180,11 +203,14 @@ $(document).ready(function() {
               moveSum = (moveSum < 0) ? -moveSum : moveSum;
               console.log('UP 2: moveSum = ' + moveSum);
               console.log(linkTouchStatus == 1 && moveSum < 5);
+              //Если была нажата ссылка и смещение меньше 5, то переходим по ссылке
               if (linkTouchStatus == 1 && moveSum < 5) {
-                linkTouchStatus = 0;
-                window.location.href = touchTarget.href;
+                //!!!! УБРАТЬ TEMEOUT
+                setTimeout(function() {
+                    linkTouchStatus = 0;
+                    window.location.href = touchTarget.href;
+                },4000);
               }
-              console.log('Up: moveSum = ' + moveSum);
               moveSum = 0;
               if (translateX > 0) {
                 slider.style.transition = 'transform 1s ease';
@@ -203,8 +229,8 @@ $(document).ready(function() {
 
 
             function Move(e) {
-                console.log('Move: linkTouchStatus = ' + linkTouchStatus);
-              console.log(e);
+              //   console.log('Move: linkTouchStatus = ' + linkTouchStatus);
+              // console.log(e);
               if(!isDown) return;
               // if (linkTouchStatus == 1) {
               //   linkTouchStatus = 0;
@@ -214,13 +240,23 @@ $(document).ready(function() {
               let x = e.pageX ? e.pageX : e.targetTouches[0].pageX; //текущая точка относительно начала блока
               let walk = (x - startX); // относительное смещение если вправо +, влево -
               translateX = sliderShift + walk;
-              moveSum = moveSum + e.movementX;
+              var movement;
+              if (typeof e.movementX == 'undefined') {
+                console.log('Move');
+                var touch = e.changedTouches[0];
+                console.log(touch);
+                moveSum = walk;
+              }
+              else {
+                movement = e.movementX;
+                moveSum = moveSum + movement;
+              }
               // console.log('walk: ' + walk);
               // console.log('sliderShift: ' + sliderShift);
               // console.log('translateX: ' + translateX);
               slider.style.transform = 'translateX(' + translateX + 'px)'; 
-              console.log('Move: e.movementX = ' + e.movementX);
-              console.log('Move: moveSum = ' + moveSum);
+              // console.log('Move: e.movementX = ' + e.movementX);
+              // console.log('Move: moveSum = ' + moveSum);
             }
         }
     }
