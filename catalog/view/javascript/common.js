@@ -100,31 +100,20 @@ $(document).ready(function() {
     //  Слайдер
     if (document.documentElement.clientWidth <= 768) {
         var slider = document.querySelector('.breadcrumb');
-        console.log('breadcrumb slider: ');
-        console.log(slider);
-        console.log(slider.offsetLeft);
         if (slider) {
             var sliderLinks = slider.querySelectorAll('a');
-            console.log(sliderLinks);
             //Переход по ссылке только в ф-ции Up
             for (var i=0; i<sliderLinks.length; i++) {
                 sliderLinks[i].addEventListener('click',function(event) {
-                    console.log('link click');
                     event.preventDefault();
                 })
             }
-            // slider.addEventListener('click', function(event) {
-            //     console.log('slider click');
-            //     if (event.target.tagName == 'A') {
-            //         console.log('slider click target tagName == "A" ');
-            //         event.preventDefault();
-            //     }
-            // });
 
             let lastElement = slider.querySelector('li:last-child');
             let sliderWidth = lastElement.offsetLeft + lastElement.offsetWidth;
             slider.style.width = sliderWidth + "px";
             let minTransform = document.documentElement.clientWidth - sliderWidth - 20;
+            minTransform = (minTransform < 0) ? minTransform : 0;
             let isDown = false;
             let startX;
             let scrollLeft;
@@ -167,8 +156,6 @@ $(document).ready(function() {
             //  Если было нажатие на тег 'a', сохраняет элемент
             var moveSum = 0;
             // 
-            var firstTouch;
-            // Куда нажали пальцем
 
             function Down(e) {
                 console.log('Down: ' + e.target.tagName);
@@ -195,21 +182,15 @@ $(document).ready(function() {
 
 
             function Up(e) {
-                console.log('Up: linkTouchStatus = ' + linkTouchStatus);
+                // console.log('Up: linkTouchStatus = ' + linkTouchStatus);
               isDown = false;
               slider.classList.remove('active');
               e.preventDefault();
-              console.log('UP 1: moveSum = ' + moveSum);
               moveSum = (moveSum < 0) ? -moveSum : moveSum;
-              console.log('UP 2: moveSum = ' + moveSum);
-              console.log(linkTouchStatus == 1 && moveSum < 5);
               //Если была нажата ссылка и смещение меньше 5, то переходим по ссылке
               if (linkTouchStatus == 1 && moveSum < 5) {
-                //!!!! УБРАТЬ TEMEOUT
-                setTimeout(function() {
-                    linkTouchStatus = 0;
-                    window.location.href = touchTarget.href;
-                },4000);
+                linkTouchStatus = 0;
+                window.location.href = touchTarget.href;
               }
               moveSum = 0;
               if (translateX > 0) {
@@ -242,9 +223,7 @@ $(document).ready(function() {
               translateX = sliderShift + walk;
               var movement;
               if (typeof e.movementX == 'undefined') {
-                console.log('Move');
                 var touch = e.changedTouches[0];
-                console.log(touch);
                 moveSum = walk;
               }
               else {
