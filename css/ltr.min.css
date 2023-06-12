@@ -488,11 +488,13 @@ textarea::placeholder {
     visibility: visible
 }
 
-.slider-arrow:hover .dandik,
-.slider-arrow:hover .bamdik {
+
+.slider-arrow .dandik,
+.slider-arrow .bamdik  {
     visibility: visible;
     opacity: 1
 }
+
 
 .dandik,
 .bamdik {
@@ -5176,6 +5178,10 @@ textarea::placeholder {
 .single-banner h2 {
     color: #fff;
     margin-bottom: 12px
+}
+
+.single-banner .container {
+    padding-bottom: 60px;
 }
 
 .top-filter {

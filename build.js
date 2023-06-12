@@ -13,7 +13,7 @@ const compiler = webpack({
         filename: "[name].bundle.js",
         publicPath: './'
     },
-    mode: 'production',
+    mode: 'development',
     module: {
         rules: [{
                 test: /\.css$/,

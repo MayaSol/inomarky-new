@@ -285,11 +285,11 @@ function makeSass(done) {
 gulp.task('sass', gulp.series(makeSass));
 
 
-gulp.task('bundle', () => 
+gulp.task('bundle', () =>
   gulp.src(`./src/bundle/script_tooltips.js`)
     .pipe(plumber())
     .pipe(webpackStream({
-      mode: 'development',
+      mode: 'production',
       entry: {'bundle': './src/bundle/script_tooltips.js'},
       output: {
         filename: '[name].js',
