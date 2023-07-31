@@ -953,7 +953,7 @@ textarea::placeholder {
 
 @media (max-width:767px) {
     .page-item {
-        margin: 0 5px
+        margin: 0 5px 5px 5px;
     }
 }
 
@@ -5319,10 +5319,58 @@ textarea::placeholder {
     justify-content: space-between;
 }
 
+.bottom-paginate .pagination {
+    flex-wrap:  wrap;
+    flex-shrink: 0;
+}
+
 .page-info {
     font-size: 17px;
     font-weight: 500;
     color: #5e5d72;
+    flex-shrink: 1;
+}
+
+@media (max-width:1199px) {
+    .page-info {
+        width:  187px; 
+        flex-shrink: 0;
+    }
+    .bottom-paginate .pagination {
+        flex-shrink: 1;
+    }
+}
+
+@media (max-width:991px) {
+    .page-info {
+        width:  auto;
+        flex-shrink: 1;
+    }
+
+    .bottom-paginate.mb-50 {
+        margin-bottom: 50px
+    }
+
+    .bottom-paginate .pagination {
+        flex-shrink: 0;
+    }
+}
+
+@media (max-width:767px) {
+    .page-info {
+        flex-basis: 100%;
+        margin-bottom: 10px;
+    }
+
+    .bottom-paginate {
+        flex-wrap: wrap;
+        align-items:  start;
+    }
+
+    .bottom-paginate .pagination {
+        justify-content: flex-start;
+        flex-shrink: 1;
+    }
 }
 
 @media (max-width:575px) {
@@ -5332,12 +5380,6 @@ textarea::placeholder {
 
     .page-info {
         margin-bottom: 15px
-    }
-}
-
-@media (max-width:991px) {
-    .bottom-paginate.mb-50 {
-        margin-bottom: 50px
     }
 }
 
@@ -9219,8 +9261,7 @@ textarea::placeholder {
     display: -ms-grid;
     display: grid;
     grid-gap: 13px;
-    -ms-grid-columns: (1fr)[2];
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: auto 1fr 1fr;
     -ms-grid-rows: auto;
     grid-template-rows: auto;
     -ms-grid-row-align: center;
@@ -9315,11 +9356,6 @@ textarea::placeholder {
 @media (max-width:991px) {
     .favorite-title {
         display: none
-    }
-
-    .favorite-widget {
-        -ms-grid-columns: (1fr)[4];
-        grid-template-columns: repeat(4, 1fr)
     }
 }
 
