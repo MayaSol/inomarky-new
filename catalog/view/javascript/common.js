@@ -345,6 +345,10 @@ $(document).ready(function() {
 
 }); //$(document).ready
 
+ $(window).on('load', function () {
+    console.log('window loaded');
+    $('.material-icons').css('display','inline-block');
+});
 
 function getURLVar(key) {
     var value = [];
