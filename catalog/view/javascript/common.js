@@ -1,5 +1,11 @@
 $(document).ready(function() {
 
+    // waitForWebfonts(['Material Icons', 'Material Symbols Outlined'], function() {
+    //     console.log('waitForWebfonts');
+    //         $('.material-icons').css('display','inline-block');
+    //         $('.material-symbols-outlined').css('display','inline-block');
+    // });
+
     var scriptUtils = document.querySelector('#utils');
 
     var body= document.getElementsByTagName('body')[0];
@@ -15,7 +21,6 @@ $(document).ready(function() {
 
 
     //Отложенная загрузка скриптов
-    console.log($(".price-slider").slick);
 
     scrollToggle({ selectData: ".header-part", toggleData: "sticky", scrollDigit: "0" }), scrollToggle({ selectData: ".product-single-scrollspy-btns", toggleData: "fixed", scrollDigit: "1150" }), sidebarLayout(), dotsAction(".comment-action-btn"), dotsAction(".review-action-btn"), document.querySelector(".header-search").lastElementChild.addEventListener("click", (e => { "tune" !== e.target.textContent ? (e.target.offsetParent.classList.remove("active"), e.target.textContent = "tune") : (e.target.offsetParent.classList.add("active"), e.target.textContent = "close") })), document.querySelector(".responsive-srch").addEventListener("click", (e => { const t = document.querySelector(".header-form"); "search" !== e.target.textContent ? (t.style.display = "none", e.target.textContent = "search") : (t.style.display = "block", e.target.textContent = "close") })), selection(".create-price-card"), selection(".create-pay-card"), cancelValue(), slickSliderDotsString();
     accordion(".accordion-item", !1);
@@ -95,10 +100,7 @@ $(document).ready(function() {
     //  Слайдер
     if (document.documentElement.clientWidth <= 768) {
         var slider = document.querySelector('.breadcrumb');
-        console.log('breadcrumb slider: ');
-        console.log(slider);
-        console.log(slider.offsetLeft);
-        if (slider) {
+        if (slider && slider.scrollWidth > document.documentElement.clientWidth - 20) {
             let lastElement = slider.querySelector('li:last-child');
             let sliderWidth = lastElement.offsetLeft + lastElement.offsetWidth;
             slider.style.width = sliderWidth + "px";
@@ -140,18 +142,13 @@ $(document).ready(function() {
 
 
             function Down(e) {
-                console.log(e.target);
-                console.log(e.target.tagName);
               if (e.target.tagName == 'A') {
                 return;
               }
               e.preventDefault();
               isDown = true;
               slider.classList.add('active');
-              console.log('mousedown: ' + e.pageX);
-              console.log('slider.offsetLeft: ' + slider.offsetLeft);
               startX = e.pageX ? e.pageX : e.targetTouches[0].pageX; //точка клика относительно начала блока, transform не влияет на offsetLeft
-              console.log('startX = ' + startX);
             }
             function Up() {
               isDown = false;
@@ -160,8 +157,6 @@ $(document).ready(function() {
                 slider.style.transition = 'transform 1s ease';
                 translateX = 0;
                 slider.style.transform = 'translateX(' + translateX + 'px)'; 
-                console.log('slider.style: ' + JSON.stringify(slider.style));
-                console.log('slider.style.transition' + JSON.stringify(slider.style.transition));
               }
               if (translateX < minTransform) {
                 slider.style.transition = 'transform 1s ease';
@@ -171,18 +166,12 @@ $(document).ready(function() {
               sliderShift = translateX;
             }
             function Move(e) {
-            console.log('move');
               if(!isDown) return;
               e.preventDefault();
-              console.log('mousemove');
               let x = e.pageX ? e.pageX : e.targetTouches[0].pageX; //текущая точка относительно начала блока
               let walk = (x - startX); // относительное смещение если вправо +, влево -
               translateX = sliderShift + walk;
-              console.log('walk: ' + walk);
-              console.log('sliderShift: ' + sliderShift);
-              console.log('translateX: ' + translateX);
               slider.style.transform = 'translateX(' + translateX + 'px)'; 
-              // console.log(walk);
             }
         }
     }
@@ -251,12 +240,7 @@ $(document).ready(function() {
     }
 
     /*Ленивая загрузка изобраений слайдера banner-slider*/
-    // var bannerSlideFirst = document.querySelector('.banner-slider > div:first-child');
-    // console.log(bannerSlideFirst);
-        // bannerSlideFirst.style.backgroundImage = 'url(' + bannerSlideFirst.getAttribute('data-bg') + ')';
     $('.banner-slider').on('afterChange', function(event, slick, currentSlide){
-        console.log('afterChange');
-        console.log(slick['$slides'][currentSlide].style.backgroundImage);
         if (!slick['$slides'][currentSlide].style.backgroundImage.length > 0) {
             slick['$slides'][currentSlide].style.backgroundImage = 'url(' + slick['$slides'][currentSlide].getAttribute('data-bg') + ')';
         }
@@ -345,10 +329,6 @@ $(document).ready(function() {
 
 }); //$(document).ready
 
- $(window).on('load', function () {
-    console.log('window loaded');
-    $('.material-icons').css('display','inline-block');
-});
 
 function getURLVar(key) {
     var value = [];
@@ -376,24 +356,21 @@ function getURLVar(key) {
 
 function scrollToggle(e){const{selectData:t,toggleData:c,scrollDigit:l}=e;window.addEventListener("scroll",(function(){const e=document.querySelector(t);window.pageYOffset>l?e?.classList.add(c):e?.classList.remove(c)}))}function clickToggle(e){const{selectData:t,toggleData:c}=e,l=document.querySelectorAll(t);for(let e=0;e<l.length;e++)l[e].addEventListener("click",(function(){l[e].className.includes(c)?l[e].classList.remove(c):l[e].classList.add(c)}))}function sidebarLayout(){const e=document.querySelector(".sidebar-part"),t=document.querySelector(".sidebar-open"),c=document.querySelector(".sidebar-close"),l=document.querySelector(".backdrop"),n=document.querySelector("body");t.addEventListener("click",(function(){e.classList.add("open"),l.classList.add("active"),n.style.overflowY="hidden"})),c.addEventListener("click",(function(){e.classList.remove("open"),l.classList.remove("active"),n.style.overflowY="scroll"})),l.addEventListener("click",(function(){e.classList.remove("open"),l.classList.remove("active"),n.style.overflowY="scroll"}))}function dotsAction(e){const t=document.querySelectorAll(e);for(let e=0;e<t.length;e++)t[e].addEventListener("click",(function(){const c=t[e].firstElementChild,l=t[e].nextElementSibling;"close"==c.textContent?(t[e].classList.remove("active"),l.classList.remove("show"),c.innerText="more_vert"):(t[e].classList.add("active"),l.classList.add("show"),c.innerText="close")}))}function selection(e){let t=document.querySelectorAll(e);for(let e=0;e<t.length;e++)t[e].addEventListener("click",(()=>{t.forEach((e=>e.classList.remove("active"))),t[e].classList.add("active")}))}function cancelValue(){document.querySelectorAll(".file-cancel").forEach((e=>{e.parentElement.querySelector(".file-input").addEventListener("change",(function(t){e.parentElement.querySelector(".file-cancel").style.display="block"})),e.addEventListener("click",(function(e){e.target.parentElement.querySelector(".file-input").value="",e.target.parentElement.querySelector(".file-cancel").style.display="none"}))}))}function slickSliderDotsString(){const e=document.querySelectorAll(".slick-dots li");Array.from(e).map(((e,t)=>{const c=t+1;e.children[0].textContent="0"+c}))}
 
-function accordion(e, t) { 
-    const l = document.querySelectorAll(e); 
-    if (t) { 
+function accordion(e, t) {
+    const l = document.querySelectorAll(e);
+    if (t) {
         const e = l[0].lastElementChild;
         e.style.height = e.scrollHeight + "px" } for (let e = 0; e < l.length; e++) l[e].firstElementChild.addEventListener("click", (() => { const t = l[e].lastElementChild,
             i = l[e].parentElement.children,
             s = Array.from(i).indexOf(l[e]); if (parseInt(t.style.height) !== t.scrollHeight) { for (let e = 0; e < i.length; e++) e !== s && (l[e].classList.remove("active"), l[e].lastElementChild.style.height = "0px");
             l[e].classList.add("active"), t.style.height = t.scrollHeight + "px" } else l[e].classList.remove("active"), t.style.height = "0px" })) 
-} 
+}
 
 
 function flyToElement(flyer, flyingTo) {
-    console.log('flyToElement; flyer: ' + flyer);
     var $func = $(this);
     var divider = $(flyer).width() / $(flyingTo).width();
     var flyerClone = $(flyer).clone();
-    console.log($(flyer));
-    console.log($(flyer).offset());
     $(flyerClone).css({ position: 'absolute', top: $(flyer).offset().top + "px", left: $(flyer).offset().left + "px", opacity: 1, 'z-index': 1000 });
     $('body').append($(flyerClone));
     var gotoX = $(flyingTo).offset().left + ($(flyingTo).width() / 2) - ($(flyer).width() / divider) / 2;
@@ -419,7 +396,6 @@ function flyToElement(flyer, flyingTo) {
 
 function flyToMenu(cardBtn) {
     var itemImg = $(cardBtn).parents('.product-grid-card').find('.product-grid-image img').eq(0);
-    console.log(itemImg);
     if (itemImg.length == 0) {
         itemImg = $(cardBtn).parents('.product-list-card').find('.product-list-image img').eq(0);
     }
@@ -532,9 +508,6 @@ function buildMap() {
 
 //После загрзуки скриптов вполняем js
 function initDocument()  {
-    console.log('initDocument');
-    console.log('scriptloadingtest 2');
-    console.log($(".price-slider").slick);
     // Highlight any found errors
 
 

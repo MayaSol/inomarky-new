@@ -1,5 +1,6 @@
 dist/
 node_modules/
+tmp/
 vendor/*
 vendor/bootstrap/*
 !vendor/bootstrap/bootstrap.min.css
