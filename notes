@@ -28,11 +28,28 @@ https://yadi.sk/d/w8f2jkaFO5pmfQ
 
 <style type="text/css">@font-face{font-family:'Material Icons';font-style:normal;font-weight:400;src:url(fonts/material/icon.woff2) format('woff2')}.material-icons{font-family:'Material Icons';font-weight:400;font-style:normal;letter-spacing:normal;text-transform:none;display:inline-block;white-space:nowrap;word-wrap:normal;direction:ltr;-webkit-font-feature-settings:'liga';-webkit-font-smoothing:antialiased}</style>
 
+
+<section class="section-gap-75 section-vykup">
+
+
 ==============================================================
 12.02.2024
 ==============================================================
+Слайдер пробега - сейчас там html слайдера года выпуска вместо пробега
+Надо поменять на тот, что на http://maiiasol.ru/inomarki/vykup-avto.html
+Selection_050.png
+
+==============================================================
+12.02.2024
+==============================================================
+Опять иконка телеги пропала
+может предзагрузку убрать?
+
 спасибо, еще не срочно..но хочется до идеала довести
-на выкупе в мобиле, убрать кнопки смены блоков формы, сделать все поля сразу друг под другом, и блок про рейтинг еренести под форму..все это только на мобиле
+на выкупе в мобиле, убрать кнопки смены блоков формы, сделать все поля сразу друг под другом, и блок про рейтинг перенести под форму..все это только на мобиле
+
+<section class="section-gap-75 section-vykup">
+<div class="common-card vykup-form-tabs">
 
 
 стрелки на этой странице уплыли https://www.inomarkispb.ru/cars/spb/audi/q8/2021/5489612

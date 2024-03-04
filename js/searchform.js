@@ -174,6 +174,7 @@ $(document).ready(function() {
     setLegend();
 
     function brandsListAdd(brand) {
+        if (!brandItemTemplate || !brandItemList) return;
         var itemHtml = brandItemTemplate.content.cloneNode(true);
         itemHtml.children[0].dataset.id = brand.id;
         itemHtml.querySelector('.brands-selected__name').innerText = brand.name;
@@ -182,6 +183,7 @@ $(document).ready(function() {
     }
 
     function brandsListRemove(id) {
+        if (!brandItemList) return;
         var el = brandItemList.querySelector('li[data-id=' + id + ']');
         if (el) {
             el.remove();
@@ -223,15 +225,17 @@ $(document).ready(function() {
         }
     })
 
-    brandItemList.addEventListener('click', function(e) {
-        if (e.target.classList.contains('brands-selected__delete')) {
-            e.preventDefault();
-            var parent = $(e.target).closest('.brands-selected__item');
-            if (parent.length > 0 && parent[0].dataset && parent[0].dataset.id) {
-                brandsListRemove(parent[0].dataset.id);
+    if (brandItemList) {
+        brandItemList.addEventListener('click', function(e) {
+            if (e.target.classList.contains('brands-selected__delete')) {
+                e.preventDefault();
+                var parent = $(e.target).closest('.brands-selected__item');
+                if (parent.length > 0 && parent[0].dataset && parent[0].dataset.id) {
+                    brandsListRemove(parent[0].dataset.id);
+                }
             }
-        }
-    })
+        })
+    }
 
 
     function refresh(e) {
